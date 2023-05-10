@@ -28,7 +28,7 @@ const Header: FC<IHeader> = ({ src, title, children }) => {
 };
 
 type IHeader = {
-  src: string;
+  src?: string;
   title: string;
   children?: ReactNode;
 };
