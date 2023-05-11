@@ -33,10 +33,19 @@ const About = ( { skills }: InferGetStaticPropsType<typeof getStaticProps> ) => 
 }
 
 export const getStaticProps: GetStaticProps  = async() => {
+    let skills = [];
+    try {
+        const response = await fetch("https://skills-api-7070e-default-rtdb.firebaseio.com/skills.json");
+        const data = await response.json();
+        skills = data.split(",");
+    } catch (e) {
+        console.error(e);
+    }
     return {
         props: {
-            skills: ["Java", "JavaScripot", "TypeScript", "ReactJs", "Git", "C/C++"]
-        }
+            skills: skills
+        },
+        revalidate: 10
     }
 }
 
