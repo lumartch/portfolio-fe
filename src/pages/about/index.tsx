@@ -1,7 +1,8 @@
-import PageSkelleton from "@/components/PageSkelleton";
-import { Button, Chip, Grid, Stack, Typography } from "@mui/material";
+import { Button, Chip, Grid, Stack } from "@mui/material";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { useRouter } from "next/router";
+
+import { Skeleton } from "@/components";
 
 const header = "Hi visitor!";
 const description = "Greetings! My name is Luis Martínez, and I am a passionate and highly skilled full-stack developer ready to embark on new and exciting coding adventures. With a solid foundation in both front-end and back-end development, I bring a wealth of technical expertise and a drive to create innovative and user-friendly digital solutions.";
@@ -13,7 +14,7 @@ const About = ( { skills }: InferGetStaticPropsType<typeof getStaticProps> ) => 
     console.log(skills);
     return (
             <section>
-                <PageSkelleton title="About me" description={description}/>
+                <Skeleton title="About me" description={description}/>
                 <Grid container spacing={3}>
                     <Grid item xs={6}>
                         <h2>{header}</h2>

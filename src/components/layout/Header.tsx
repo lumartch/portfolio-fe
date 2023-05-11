@@ -1,7 +1,13 @@
-import { Avatar, Box, Button } from "@mui/material";
 import { FC, ReactNode } from "react";
+import { Avatar, Box, Button } from "@mui/material";
 
-const Header: FC<IHeader> = ({ src, title, children }) => {
+type IHeader = {
+  src?: string;
+  title: string;
+  children?: ReactNode;
+};
+
+export const Header: FC<IHeader> = ({ src, title, children }) => {
   return (
     <header>
       <Button
@@ -26,11 +32,3 @@ const Header: FC<IHeader> = ({ src, title, children }) => {
     </header>
   );
 };
-
-type IHeader = {
-  src?: string;
-  title: string;
-  children?: ReactNode;
-};
-
-export default Header;

@@ -1,9 +1,9 @@
-.PageSkelleton {
+.Skeleton {
   padding: 20px 0 40px 0;
   text-align: center;
 }
 
-.PageSkelleton h1 {
+.Skeleton h1 {
   font-size: 40px;
   text-transform: uppercase;
   letter-spacing: 5px;

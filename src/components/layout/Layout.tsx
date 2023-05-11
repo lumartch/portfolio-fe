@@ -1,15 +1,14 @@
 import { FC, ReactNode } from "react";
 import { Container } from "@mui/material";
-
-import Header from "./Header";
-import Footer from "./Footer";
 import Link from "next/link";
+import { Header } from "./Header";
+import { Footer } from "./Footer";
 
 type ILayout = {
     children?: ReactNode;
 }
 
-const Layout:FC<ILayout> = ({ children }) => {
+export const Layout:FC<ILayout> = ({ children }) => {
     return (
         <>
             <Header title="Lumart Chryssomallis">
@@ -26,5 +25,3 @@ const Layout:FC<ILayout> = ({ children }) => {
         </>
     );
 }
-
-export default Layout;

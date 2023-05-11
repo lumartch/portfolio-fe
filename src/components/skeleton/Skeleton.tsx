@@ -1,20 +1,18 @@
 import { FC } from 'react';
 
-import styles from './PageSkelleton.module.css';
+import styles from './Skeleton.module.css';
 
-type IPageSkelleton = {
+type ISkeleton = {
     title: string;
     description: string;
 }
 
-const PageSkelleton: FC<IPageSkelleton> = ({title, description}) => {
+export const Skeleton: FC<ISkeleton> = ({title, description}) => {
     return (
-        <div className={styles.PageSkelleton}>
+        <div className={styles.Skeleton}>
             <h1>{title}</h1>
             <div className={styles.Divider}> </div>
             <span>{description}</span>
         </div>
     );
 };
-
-export default PageSkelleton;
