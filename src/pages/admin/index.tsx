@@ -25,6 +25,10 @@ const Admin = () => {
         }
     }
 
+    const handleSubmit = (values: any) => {
+        console.log(values);
+    }
+
     return (
         <section>
             <Skeleton title="Admin page" description={description} />
@@ -36,7 +40,7 @@ const Admin = () => {
             {projects.map((project: IProject, index: number) => 
                 <ProjectItem key={index} project={project} />
             )}
-            <NewProject open={open} onClose={ () => setIsOpen(false) }/>
+            <NewProject open={open} onClose={ () => setIsOpen(false) } onSubmit={handleSubmit}/>
         </section>
     );
 }

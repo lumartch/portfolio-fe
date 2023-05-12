@@ -2,14 +2,19 @@ import { Chip, Grid, InputLabel, MenuItem, Select, TextField } from "@mui/materi
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Controller, useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 
-export const ProjectForm = () => {
+type IProjectForm = {
+    onSubmit: (values: any) => void,
+}
+
+export const ProjectForm: FC<IProjectForm> = ({ onSubmit }) => {
     const [skills, setSkills] = useState([]);
 
     const defaultValues = {
         name: "",
         description: "",
+        overview: "",
         imageUrl: "",
         tools: []
     };
@@ -17,15 +22,18 @@ export const ProjectForm = () => {
     const projectSchema = yup.object().shape({
         name: yup.string().required("In order to add a new project is necessary to add the name of it."),
         description:  yup.string(),
-        imageUrl: yup.string(),
+        overview: yup.string(),
+        imageUrl: yup.string().required("In order to add a new project is necessary to add a image preview."),
         tools: yup.array(),
     });
 
-    const { control } = useForm({
+    const { control, watch, reset, handleSubmit } = useForm({
         defaultValues,
         resolver: yupResolver(projectSchema),
         mode: 'all'
     });
+
+    const imageValue = watch('imageUrl');
 
     const fetchSkills = async() => {
         try {
@@ -40,8 +48,8 @@ export const ProjectForm = () => {
     useEffect(() => { fetchSkills(); }, [])
 
     return (
-        <form>
-            <Grid container spacing={4}>
+        <form id="project-form" onReset={ () => reset(defaultValues) } onSubmit={ handleSubmit(onSubmit) } >
+            <Grid container spacing={4} padding={2}>
                 <Grid item xs={12}>
                     <Controller
                         control={control}
@@ -52,9 +60,6 @@ export const ProjectForm = () => {
                             label="Project name"
                             variant="outlined"
                             fullWidth
-                            multiline
-                            minRows={2}
-                            maxRows={2}
                             error={ !!fieldState.error }
                             helperText={ fieldState.error?.message }
                             ></TextField>)
@@ -83,11 +88,11 @@ export const ProjectForm = () => {
                 <Grid item xs={12}>
                     <Controller
                         control={control}
-                        name="imageUrl"
+                        name="overview"
                         render={ ({field, fieldState}) => (
                         <TextField 
                             {...field}
-                            label="Image URL"
+                            label="Overview"
                             variant="outlined"
                             fullWidth
                             multiline
@@ -135,6 +140,32 @@ export const ProjectForm = () => {
                         )}
                     />
                 </Grid>
+                <Grid item xs={12}>
+                    <Controller
+                        control={control}
+                        name="imageUrl"
+                        render={ ({field, fieldState}) => (
+                        <TextField 
+                            {...field}
+                            label="Image URL"
+                            variant="outlined"
+                            fullWidth
+                            error={ !!fieldState.error }
+                            helperText={ fieldState.error?.message }
+                            ></TextField>)
+                        }
+                    />
+                </Grid>
+                {
+                    imageValue && 
+                    <Grid item xs={12}>
+                        <img
+                            src={imageValue}
+                            alt="projectImage"
+                            style={{ width: "100%" }}
+                        />
+                    </Grid>
+                }
             </Grid>
         </form>
     );
