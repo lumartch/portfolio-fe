@@ -26,7 +26,8 @@ const Admin = () => {
     }
 
     const handleSubmit = (values: any) => {
-        console.log(values);
+        let pr = [...projects, { ...values, _id: projects.length + 1 }]
+        setProjects(pr);
     }
 
     return (
