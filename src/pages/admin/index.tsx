@@ -10,8 +10,8 @@ const description = "Page dedicated to manage existing projects."
 
 const Admin = () => {
     const [isOpenNew, setIsOpenNew] = useState<boolean>(false);
-    const [projects, setProjects] = useState<Array<any>>([]);
-    const [editProject, setEditProject] = useState<any>(undefined);
+    const [projects, setProjects] = useState<Array<IProject>>([]);
+    const [editProject, setEditProject] = useState<IProject | undefined>(undefined);
 
     useEffect(() => {
         fetchProjects();
@@ -27,7 +27,7 @@ const Admin = () => {
         }
     }
 
-    const handleOnSubmit = (values: any) => {
+    const handleOnSubmit = (values: IProject) => {
         const tempProjects = Array.from(projects)
         if (!!values._id) {
             const projectIndex = tempProjects.findIndex(p => p._id === values._id)
@@ -38,8 +38,8 @@ const Admin = () => {
                 _id: projects.length + 1,
             })
         }
-        console.log(tempProjects);
         setProjects(tempProjects);
+        setIsOpenNew(false);
     }
     
     const handleDelete = (id: number) =>{
@@ -58,8 +58,8 @@ const Admin = () => {
                 <ProjectItem 
                     key={index} 
                     project={project} 
-                    handleDelete={() => handleDelete(project._id)}
-                    handleEdit={() => setEditProject(project)}
+                    handleDelete={ () => handleDelete(project._id!) }
+                    handleEdit={ () => setEditProject(project) }
                 />
             )}
             <NewProject open={ isOpenNew } onClose={ () => setIsOpenNew(false) } onSubmit={ handleOnSubmit }/>

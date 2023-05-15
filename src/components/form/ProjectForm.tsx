@@ -3,16 +3,17 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Controller, useForm } from "react-hook-form";
 import { FC, useEffect, useState } from "react";
+import { IProject } from "@/types/Types";
 
 type IProjectForm = {
     onSubmit: (values: any) => void,
-    editValues?: any;
+    editValues?: IProject;
 }
 
 export const ProjectForm: FC<IProjectForm> = ({ onSubmit, editValues }) => {
     const [skills, setSkills] = useState([]);
 
-    const defaultValues = {
+    const defaultValues: IProject = {
         name: "",
         description: "",
         overview: "",
@@ -119,24 +120,23 @@ export const ProjectForm: FC<IProjectForm> = ({ onSubmit, editValues }) => {
                                 multiple
                                 minRows={2}
                                 maxRows={2}
-                                // renderValue={(selected) => {
-                                //     return (
-                                //         <Grid container gap={1}>
-                                //             {selected.map((values: string, index: number) => {
-                                //                 console.log("Hello")
-                                //                 return (
-                                //                     <Grid item key={index}>
-                                //                         <Chip label={values}></Chip>
-                                //                     </Grid>
-                                //                 )})
-                                //             }
-                                //         </Grid>
-                                //     );
-                                // }}
+                                renderValue={(selected) => {
+                                    return (
+                                        <Grid container gap={1}>
+                                            {selected.map((values: String, index: number) => {
+                                                return (
+                                                    <Grid item key={index}>
+                                                        <Chip label={values}></Chip>
+                                                    </Grid>
+                                                )})
+                                            }
+                                        </Grid>
+                                    );
+                                }}
                             >
-                                {/* {skills.map((skill: string, index: number) => (
+                                {skills.map((skill: string, index: number) => (
                                     <MenuItem key={index} value={skill}>{skill}</MenuItem>
-                                ))} */}
+                                ))}
                             </Select>
                         )}
                     />
