@@ -4,12 +4,15 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
 import { IProject } from "@/types/Types";
+import { ItemActions } from "./ItemActions";
 
 type IProjectItem = {
-    project: IProject
+    project: IProject;
+    handleEdit: () => void;
+    handleDelete: () => void;
 }
 
-export const ProjectItem: FC<IProjectItem> = ({ project }) => {
+export const ProjectItem: FC<IProjectItem> = ({ project, handleEdit, handleDelete }) => {
     const router = useRouter();
     return (
         <Grid container spacing={6} sx={{ pb: "40px" }}>
@@ -24,13 +27,11 @@ export const ProjectItem: FC<IProjectItem> = ({ project }) => {
                 <Stack spacing={4}>
                 <h3>{project.name}</h3>
                 <div>{project.description}</div>
-                <Button
-                    variant="contained"
-                    size="large"
-                    onClick={() => router.push(`/projects/${project._id}`)}
-                >
-                    Use Case
-                </Button>
+                <ItemActions
+                    id={project._id}
+                    onDelete={ handleDelete }
+                    onEdit={ handleEdit }
+                />
                 </Stack>
             </Grid>
         </Grid>

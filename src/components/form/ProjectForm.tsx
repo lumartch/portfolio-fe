@@ -6,9 +6,10 @@ import { FC, useEffect, useState } from "react";
 
 type IProjectForm = {
     onSubmit: (values: any) => void,
+    editValues?: any;
 }
 
-export const ProjectForm: FC<IProjectForm> = ({ onSubmit }) => {
+export const ProjectForm: FC<IProjectForm> = ({ onSubmit, editValues }) => {
     const [skills, setSkills] = useState([]);
 
     const defaultValues = {
@@ -28,10 +29,10 @@ export const ProjectForm: FC<IProjectForm> = ({ onSubmit }) => {
     });
 
     const { control, watch, reset, handleSubmit } = useForm({
-        defaultValues,
+        defaultValues: editValues || defaultValues,
         resolver: yupResolver(projectSchema),
-        mode: 'all'
-    });
+        mode: 'all',
+    })
 
     const imageValue = watch('imageUrl');
 
@@ -109,7 +110,7 @@ export const ProjectForm: FC<IProjectForm> = ({ onSubmit }) => {
                     <Controller
                         control={control}
                         name="tools"
-                        render={ ({field, fieldState}) => (
+                        render={ ({ field }) => (
                             <Select 
                                 {...field}
                                 labelId="tools-label"
@@ -118,24 +119,24 @@ export const ProjectForm: FC<IProjectForm> = ({ onSubmit }) => {
                                 multiple
                                 minRows={2}
                                 maxRows={2}
-                                error={ !!fieldState.error }
-                                renderValue={(selected) => {
-                                    return (
-                                        <Grid container gap={1}>
-                                            {selected.map((values: string, index: number) => {
-                                                return (
-                                                    <Grid item key={index}>
-                                                        <Chip label={values}></Chip>
-                                                    </Grid>
-                                                )})
-                                            }
-                                        </Grid>
-                                    );
-                                }}
-                                >
-                                {skills.map((skill: string, index: number) => (
+                                // renderValue={(selected) => {
+                                //     return (
+                                //         <Grid container gap={1}>
+                                //             {selected.map((values: string, index: number) => {
+                                //                 console.log("Hello")
+                                //                 return (
+                                //                     <Grid item key={index}>
+                                //                         <Chip label={values}></Chip>
+                                //                     </Grid>
+                                //                 )})
+                                //             }
+                                //         </Grid>
+                                //     );
+                                // }}
+                            >
+                                {/* {skills.map((skill: string, index: number) => (
                                     <MenuItem key={index} value={skill}>{skill}</MenuItem>
-                                ))}
+                                ))} */}
                             </Select>
                         )}
                     />
