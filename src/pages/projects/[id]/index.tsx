@@ -1,5 +1,5 @@
 import { Skeleton } from "@/components";
-import { Box, Button, Grid } from "@mui/material";
+import { Box, Button, Chip, Grid } from "@mui/material";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { FC } from "react";
@@ -33,7 +33,15 @@ const Project: FC<IProject> = ({project}) => {
                 </Box>
                 <h1>Tools used</h1>
                 <Box>
-                    {project.tools}
+                    <Grid container gap={1}>
+                        {project.tools.map((values: string, index: number) => {
+                            return (
+                                <Grid item key={index}>
+                                    <Chip label={values}></Chip>
+                                </Grid>
+                            )})
+                        }
+                    </Grid>
                 </Box>
             </Grid>
         </>

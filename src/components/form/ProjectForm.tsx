@@ -123,7 +123,7 @@ export const ProjectForm: FC<IProjectForm> = ({ onSubmit, editValues }) => {
                                 renderValue={(selected) => {
                                     return (
                                         <Grid container gap={1}>
-                                            {selected.map((values: String, index: number) => {
+                                            {selected.map((values: string, index: number) => {
                                                 return (
                                                     <Grid item key={index}>
                                                         <Chip label={values}></Chip>

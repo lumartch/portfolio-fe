@@ -4,5 +4,5 @@ export type IProject = {
     description: string;
     overview: string;
     imageUrl: string;
-    tools: Array<String>;
+    tools: Array<string>;
 }
