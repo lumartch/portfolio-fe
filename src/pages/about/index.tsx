@@ -11,7 +11,6 @@ const paragraphTwo = "Aliquam id diam maecenas ultricies mi eget mauris. A cras 
 
 const About = ( { skills }: InferGetStaticPropsType<typeof getStaticProps> ) => {
     const router = useRouter();
-    console.log(skills);
     return (
             <section>
                 <Skeleton title="About me" description={description}/>
