@@ -1,10 +1,9 @@
-import { Skeleton, ProjectItem } from "@/components";
+import { Skeleton, ProjectItem, NewProject, EditProject } from "@/components";
 import { useEffect, useState } from "react";
 
 import { IProject } from "@/types/Types";
 import { Button, Grid } from "@mui/material";
-import { NewProject } from "@/components/modal/NewProject";
-import { EditProject } from "@/components/modal/EditProject";
+import { getAllProjects } from "@/api/Projects";
 
 const description = "Page dedicated to manage existing projects."
 
@@ -18,13 +17,8 @@ const Admin = () => {
     }, []);
 
     const fetchProjects = async () => {
-        try {
-            const response = await fetch("http://localhost:3000/api/projects");
-            const json = await response.json();
-            setProjects(json);
-        } catch (e) {
-            console.error(e);
-        }
+        const projects = await getAllProjects();
+        setProjects(projects);
     }
 
     const handleOnSubmit = (values: IProject) => {

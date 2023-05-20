@@ -2,6 +2,7 @@ import { IProject } from "@/types/Types";
 import { GetServerSideProps } from "next";
 
 import { Skeleton, ProjectItem } from "@/components";
+import { getAllProjects } from "@/api/Projects";
 
 const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Cursus sit amet dictum sit amet. Tellus rutrum tellus pellentesque eu. Nec tincidunt praesent semper feugiat nibh sed.";
 
@@ -23,8 +24,7 @@ const Projects = ({ projects }: IProps) => {
 export const getServerSideProps: GetServerSideProps = async() => {
     let projects = [];
     try {
-        const response = await fetch("http://localhost:3000/api/projects");
-        projects = await response.json();
+        projects = await getAllProjects();
     } catch (e) {
         console.error(e);
     }

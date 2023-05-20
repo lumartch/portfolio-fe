@@ -18,15 +18,17 @@ export const ProjectForm: FC<IProjectForm> = ({ onSubmit, editValues }) => {
         description: "",
         overview: "",
         imageUrl: "",
+        projectLink: "",
         tools: []
     };
 
     const projectSchema = yup.object().shape({
         name: yup.string().required("In order to add a new project is necessary to add the name of it."),
-        description:  yup.string(),
-        overview: yup.string(),
+        description:  yup.string().required(),
+        overview: yup.string().required(),
         imageUrl: yup.string().required("In order to add a new project is necessary to add a image preview."),
         tools: yup.array(),
+        projectLink: yup.string()
     });
 
     const { control, watch, reset, handleSubmit } = useForm({
@@ -100,6 +102,22 @@ export const ProjectForm: FC<IProjectForm> = ({ onSubmit, editValues }) => {
                             multiline
                             minRows={2}
                             maxRows={2}
+                            error={ !!fieldState.error }
+                            helperText={ fieldState.error?.message }
+                            ></TextField>)
+                        }
+                    />
+                </Grid>
+                <Grid item xs={12}>
+                    <Controller
+                        control={control}
+                        name="projectLink"
+                        render={ ({field, fieldState}) => (
+                        <TextField 
+                            {...field}
+                            label="Project Link"
+                            variant="outlined"
+                            fullWidth
                             error={ !!fieldState.error }
                             helperText={ fieldState.error?.message }
                             ></TextField>)

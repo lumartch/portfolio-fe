@@ -4,3 +4,5 @@ export { Header } from './layout/Header';
 export { Skeleton } from './skeleton/Skeleton';
 export { ProjectItem } from './projectItem/ProjectItem';
 export { ProjectForm } from './form/ProjectForm';
+export { EditProject } from './modal/EditProject';
+export { NewProject } from './modal/NewProject';

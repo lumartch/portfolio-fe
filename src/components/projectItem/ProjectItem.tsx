@@ -8,8 +8,8 @@ import { ItemActions } from "./ItemActions";
 
 type IProjectItem = {
     project: IProject;
-    handleEdit: () => void;
-    handleDelete: () => void;
+    handleEdit?: () => void;
+    handleDelete?: () => void;
 }
 
 export const ProjectItem: FC<IProjectItem> = ({ project, handleEdit, handleDelete }) => {
