@@ -4,6 +4,7 @@ import * as yup from 'yup';
 import { Controller, useForm } from "react-hook-form";
 import { FC, useEffect, useState } from "react";
 import { IProject } from "@/types/Types";
+import Image from "next/image";
 
 type IProjectForm = {
     onSubmit: (values: any) => void,
@@ -178,10 +179,11 @@ export const ProjectForm: FC<IProjectForm> = ({ onSubmit, editValues }) => {
                 {
                     imageValue && 
                     <Grid item xs={12}>
-                        <img
+                        <Image
                             src={imageValue}
                             alt="projectImage"
-                            style={{ width: "100%" }}
+                            width={550}
+                            height={550}
                         />
                     </Grid>
                 }

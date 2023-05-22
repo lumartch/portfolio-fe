@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { FC } from "react";
 
 type IItemActions = {
-    id: number;
+    id: string;
     onEdit: () => void;
     onDelete: () => void;
 }
