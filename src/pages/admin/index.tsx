@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import { IProject } from "@/types/Types";
 import { Button, Grid } from "@mui/material";
-import { getAllProjects } from "@/api/Projects";
+import { createProject, deleteProject, getAllProjects, updateProject } from "@/api/Projects";
 
 const description = "Page dedicated to manage existing projects."
 
@@ -21,23 +21,25 @@ const Admin = () => {
         setProjects(projects);
     }
 
-    const handleOnSubmit = (values: IProject) => {
+    const handleOnSubmit = async (project: IProject) => {
         const tempProjects = Array.from(projects)
-        if (!!values._id) {
-            const projectIndex = tempProjects.findIndex(p => p._id === values._id)
-            tempProjects[projectIndex] = values;
+        if (!!project._id) {
+            const updatedProject = await updateProject(project);
+            const projectIndex = tempProjects.findIndex(p => p._id === updatedProject._id)
+            tempProjects[projectIndex] = updatedProject;
         } else {
-            tempProjects.push({
-                ...values,
-                _id: projects.length + 1,
-            })
+            const newProject = await createProject(project);
+            tempProjects.push(newProject);
         }
         setProjects(tempProjects);
         setIsOpenNew(false);
     }
     
-    const handleDelete = (id: number) =>{
-        setProjects(prev => prev.filter(p => p._id !== id))
+    const handleDelete = async (id: string) => {
+        const isDeleted = await deleteProject(id);
+        if (isDeleted) {
+            setProjects(prev => prev.filter(p => p._id != id))
+        }
     }
 
     return (

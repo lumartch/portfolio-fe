@@ -1,5 +1,5 @@
 export type IProject = {
-    _id?: number;
+    _id?: string;
     name: string;
     description: string;
     overview: string;
