@@ -4,8 +4,13 @@
 name: Main_Pipeline
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
-    branches: [ "main" ]
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - main
 
 jobs:
   build:
