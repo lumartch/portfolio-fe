@@ -1,5 +1,5 @@
 import { FC, ReactNode, useContext } from "react";
-import { Box, Container, IconButton, Typography, useTheme } from "@mui/material";
+import { Box, Grid, IconButton, Typography, useTheme } from "@mui/material";
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import Link from "next/link";
@@ -40,9 +40,9 @@ export const Layout:FC<ILayout> = ({ children }) => {
                     </IconButton>
                 </Box>
             </Header>
-            <Container fixed sx={{ bgcolor: 'background.default', color: 'text.primary' }} >
-                <main>{children}</main>
-            </Container>
+            <Grid container sx={{ bgcolor: 'background.default', color: 'text.primary' }} >
+                <Box>{children}</Box>
+            </Grid>
             <Footer/>
         </Box>
     );

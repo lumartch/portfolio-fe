@@ -12,12 +12,12 @@ type IProps = {
 
 const Projects = ({ projects }: IProps) => {
     return (
-        <section>
+        <>
             <Skeleton title="Projects" description={description} />
             {projects.map((project: IProject, index: number) => 
                 <ProjectItem key={index} project={project} />
             )}
-        </section>
+        </>
     );
 }
 

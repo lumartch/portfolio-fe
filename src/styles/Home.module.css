@@ -1,11 +1,4 @@
-.Home {
-  text-align: center;
-  padding: 40px;
-  background-color: 'background.default',;
-  color: 'text.primary' ;
-}
-
-.Name {
+.name {
   font-size: 60px;
   text-transform: uppercase;
   letter-spacing: 5px;
@@ -14,7 +7,7 @@
   color: 'text.primary' ;
 }
 
-.Summary {
+.summary {
   font-size: 24px;
   padding: 50px 100px;
   background-color: 'background.default',;

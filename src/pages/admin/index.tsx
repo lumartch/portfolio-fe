@@ -43,7 +43,7 @@ const Admin = () => {
     }
 
     return (
-        <section>
+        <>
             <Skeleton title="Admin page" description={description} />
             <Grid container justifyContent="center" paddingBottom={10}>
                 <Grid item>
@@ -60,7 +60,7 @@ const Admin = () => {
             )}
             <NewProject open={ isOpenNew } onClose={ () => setIsOpenNew(false) } onSubmit={ handleOnSubmit }/>
             <EditProject open={ !!editProject } onClose={ () => setEditProject(undefined) } onSubmit={ handleOnSubmit } project={ editProject } />
-        </section>
+        </>
     );
 }
 

@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 
 import { Skeleton } from "@/components";
 
+import global from '../../styles/Global.module.css';
+
 const header = "Hi visitor!";
 const description = "Greetings! My name is Luis Martínez, and I am a passionate and highly skilled full-stack developer ready to embark on new and exciting coding adventures. With a solid foundation in both front-end and back-end development, I bring a wealth of technical expertise and a drive to create innovative and user-friendly digital solutions.";
 const paragraphOne = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Cursus sit amet dictum sit amet. Tellus rutrum tellus pellentesque eu. Nec tincidunt praesent semper feugiat nibh sed. Id aliquet risus feugiat in ante metus. Quisque id diam vel quam elementum pulvinar etiam. Quam viverra orci sagittis eu. Vulputate sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum.";
@@ -12,7 +14,7 @@ const paragraphTwo = "Aliquam id diam maecenas ultricies mi eget mauris. A cras 
 const About = ( { skills }: InferGetStaticPropsType<typeof getStaticProps> ) => {
     const router = useRouter();
     return (
-            <section>
+            <div className={global.container}>
                 <Skeleton title="About me" description={description}/>
                 <Grid container spacing={3}>
                     <Grid item xs={6}>
@@ -28,7 +30,7 @@ const About = ( { skills }: InferGetStaticPropsType<typeof getStaticProps> ) => 
                     </Grid>
                 </Grid>
                 <Button variant="outlined" size="large" onClick={() => router.push("/contact")}>Contact</Button>
-            </section>
+            </div>
         );
 }
 
