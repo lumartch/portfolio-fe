@@ -3,6 +3,7 @@ import { Container } from "@mui/material";
 import Link from "next/link";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+import { DEVELOPER_NAME, GITHUB_AVATAR } from "@/const";
 
 type ILayout = {
     children?: ReactNode;
@@ -11,12 +12,11 @@ type ILayout = {
 export const Layout:FC<ILayout> = ({ children }) => {
     return (
         <>
-            <Header title="Lumart Chryssomallis">
+            <Header src={GITHUB_AVATAR} title={DEVELOPER_NAME!}>
                 <Link href="/">Home</Link>
                 <Link href="/contact">Contact</Link>
                 <Link href="/projects">Projects</Link>
                 <Link href="/about">About</Link>
-                <Link href="/admin">Admin</Link>
             </Header>
             <Container fixed>
                 <main>{children}</main>
