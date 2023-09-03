@@ -1,8 +1,9 @@
 import { GetStaticProps, InferGetStaticPropsType } from "next";
-import styles from "../styles/Home.module.css";
 import { Button } from "@mui/material";
 import { useRouter } from "next/router";
 import { DEVELOPER_NAME, DEVELOPER_SUMMARY } from "@/const";
+
+import styles from "../styles/Home.module.css";
 
 const Home = ({name, summary}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();

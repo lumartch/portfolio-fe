@@ -12,10 +12,11 @@
     "e2e": "cypress open"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.0",
+    "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@hookform/resolvers": "^3.1.0",
-    "@mui/material": "^5.12.3",
+    "@mui/icons-material": "^5.14.7",
+    "@mui/material": "^5.14.7",
     "@types/node": "20.1.1",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",

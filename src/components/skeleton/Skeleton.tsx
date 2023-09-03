@@ -9,9 +9,9 @@ type ISkeleton = {
 
 export const Skeleton: FC<ISkeleton> = ({title, description}) => {
     return (
-        <div className={styles.Skeleton}>
+        <div className={styles.skelleton}>
             <h1>{title}</h1>
-            <div className={styles.Divider}> </div>
+            <div className={styles.divider}/>
             <span>{description}</span>
         </div>
     );

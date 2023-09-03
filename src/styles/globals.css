@@ -4,17 +4,21 @@ body {
   padding: 0;
   font-family: 'Source Sans Pro';
   font-size: 18px;
-  background-color: #fff;
+  color: 'text.primary';
+  background-color: 'background.default';
   color: #333;
 }
 
 body {
   display: flex;
   flex-direction: column;
+  color: 'text.primary';
+  background-color: 'background.default';
 }
 
 a {
   text-decoration: none;
+  
 }
 
 header {
@@ -28,13 +32,14 @@ header {
   display: flex;
   justify-content: space-between;
   padding: 15px 50px;
-  background-color: #fff;
-  box-shadow: 0 5px 10px 0 #ccc;
+  color: 'text.primary';
+  background-color: 'background.default';
+  box-shadow: '0 5px 10px 0 text.primary';
 }
 
 header a {
   padding: 10px 30px;
-  color: #333;
+  color: black;
   letter-spacing: 1px;
   font-weight: 700;
   transition: color .3s;
@@ -46,6 +51,9 @@ header a:hover {
 
 main {
   padding: 100px 20px;
+  color: 'text.primary';
+  background-color: 'background.default';
+  min-height: 100%;
 }
 
 footer {
@@ -60,4 +68,6 @@ footer {
   left: 0;
   right: 0;
   z-index: 1000;
+  color: 'text.primary';
+  background-color: 'background.default';
 }

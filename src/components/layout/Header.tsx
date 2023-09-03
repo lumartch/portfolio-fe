@@ -14,7 +14,7 @@ export const Header: FC<IHeader> = ({ src, title, children }) => {
         startIcon={<Avatar alt="logo" src={src} />}
         sx={{
           fontSize: "1.1rem",
-          color: "black",
+          bgcolor: 'background.default', color: 'text.primary' 
         }}
       >
         {title}
@@ -25,6 +25,7 @@ export const Header: FC<IHeader> = ({ src, title, children }) => {
           flexDirection: "row",
           justifyContent: "flex-end",
           alignItems: "center",
+          bgcolor: 'background.default', color: 'text.primary' 
         }}
       >
         {children}
