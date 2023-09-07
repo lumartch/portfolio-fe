@@ -17,7 +17,7 @@ export const Header: FC<IHeader> = ({ src, title, children }) => {
   return (
     <Grid item container xs={12} sx={{display: "flex", flexDirection: "row", justifyContent: "space-evenly", textTransform: "uppercase"}}>
       <Grid item sx={{ display: "flex", alignItems: "center" }}>
-        <Button target="_blank" href={LINKEDIN_URI} startIcon={<Avatar alt="logo" src={src} />} sx={{ fontSize: "1.1rem", color: 'text.primary' }}>
+        <Button href={LINKEDIN_URI} startIcon={<Avatar alt="logo" src={src} />} sx={{ fontSize: "1.1rem", color: 'text.primary' }}>
           {title}
         </Button>
       </Grid>
