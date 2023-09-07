@@ -7,7 +7,7 @@ type ITheme = {
 }
 
 export const Theme:FC<ITheme> = ({ children }) => {
-    const [mode, setMode] = useState<'light' | 'dark'>('light');
+    const [mode, setMode] = useState<'light' | 'dark'>('dark');
     const colorMode = useMemo(
         () => ({
             toggleColorMode: () => {

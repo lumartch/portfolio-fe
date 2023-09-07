@@ -1,19 +1,22 @@
 import { GetStaticProps, InferGetStaticPropsType } from "next";
-import { Button } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import { DEVELOPER_NAME, DEVELOPER_SUMMARY } from "@/const";
-
-import home from '../styles/Home.module.css';
-import global from '../styles/Global.module.css';
 
 const Home = ({name, summary}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
   return (
-      <div className={global.container}>
-        <h1 className={home.name}>{name}</h1>
-        <div className={home.summary}>{summary}</div>
-        <Button variant="outlined" size="large" onClick={() => router.push("/projects")}>My Proyects</Button>
-      </div>
+      <Grid container sx={{ textAlign: "center", alignItems: "center" }} spacing={5}>
+        <Grid item xs={12}>
+          <Typography variant="h3" style={{ textTransform: "uppercase" }}>{name}</Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography>{summary}</Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <Button variant="outlined" size="large" onClick={() => router.push("/projects")}>My Proyects</Button>
+        </Grid>
+      </Grid>
     );
 }
 

@@ -5,3 +5,4 @@ export const DEVELOPER_SUMMARY = `Software Developer Engineer with experience in
     To advance my profession as a Full-stack Engineer, I'm now working to improve my tool abilities for ReactJS, Jest, Java, SpringBoot, and Rest API design.`
 export const GITHUB_AVATAR = process.env.NEXT_PUBLIC_GITHUB_AVATAR;
 export const SERVER_URI = process.env.NEXT_PUBLIC_SERVER_URI;
+export const LINKEDIN_URI = process.env.NEXT_PUBLIC_LINKEDIN_PROFILE;
