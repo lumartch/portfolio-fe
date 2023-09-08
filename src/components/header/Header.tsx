@@ -4,16 +4,21 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { ColorModeContext } from "../theme/ColorModeContext";
 import { LINKEDIN_URI } from "@/const";
+import Link from "next/link";
+
+import layoutStyle from './Header.module.css';
+import { LinksMap } from "@/interfaces";
 
 type IHeader = {
   src?: string;
   title: string;
-  children?: ReactNode;
+  links: LinksMap; 
 };
 
-export const Header: FC<IHeader> = ({ src, title, children }) => {
+export const Header: FC<IHeader> = ({ src, title, links }) => {
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
+  const linkTheme = theme.palette.mode === 'dark' ? `${layoutStyle.link} ${layoutStyle.white}` : `${layoutStyle.link}`;
   return (
     <Grid item container xs={12} sx={{display: "flex", flexDirection: "row", justifyContent: "space-evenly", textTransform: "uppercase"}}>
       <Grid item sx={{ display: "flex", alignItems: "center" }}>
@@ -21,9 +26,13 @@ export const Header: FC<IHeader> = ({ src, title, children }) => {
           {title}
         </Button>
       </Grid>
+      { Object.keys(links).map((key: string, index: number) => (
+        <Grid item key={index} sx={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+          <Link className={linkTheme} href={links[key]}>{key}</Link>
+        </Grid> 
+      ))}
       <Grid item>
         <Grid container item sx={{ display: "flex", flexDirection: "row", justifyContent: "flex-end", alignItems: "center" }}>
-          <Box>{children}</Box>
           <Typography color={theme.palette.mode}>{theme.palette.mode} mode</Typography>
           <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
               {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
