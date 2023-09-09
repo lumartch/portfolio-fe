@@ -26,13 +26,15 @@ export const Header: FC<IHeader> = ({ src, title, links }) => {
           {title}
         </Button>
       </Grid>
+      <Grid item sx={{ display: "flex", flexDirection: "row", alignItems: "center" }}> </Grid>
       { Object.keys(links).map((key: string, index: number) => (
         <Grid item key={index} sx={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
           <Link className={linkTheme} href={links[key]}>{key}</Link>
         </Grid> 
       ))}
+      <Grid item sx={{ display: "flex", flexDirection: "row", alignItems: "center" }}> </Grid>
       <Grid item>
-        <Grid container item sx={{ display: "flex", flexDirection: "row", justifyContent: "flex-end", alignItems: "center" }}>
+        <Grid container item sx={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
           <Typography color={theme.palette.mode}>{theme.palette.mode} mode</Typography>
           <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
               {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
