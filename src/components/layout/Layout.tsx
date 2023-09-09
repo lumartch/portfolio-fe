@@ -12,12 +12,12 @@ type ILayout = {
 export const Layout:FC<ILayout> = ({ children }) => {
     return (
         <Grid item container xs={12} 
-            sx={{ bgcolor: 'background.default', color: 'text.primary', display: "block", 
+            sx={{ bgcolor: 'background.default', color: 'text.primary', display: "block", paddingBottom: "80px",
             flexDirection: "row", justifyContent: "flex-start", position: "absolute", minHeight: "100%" }}>
-            <Grid item xs={12} sx={{ p: 4, maxHeight: "140px", display: "flex" }}>
+            <Grid item xs={12} sx={{ p: 4, display: "flex" }}>
                 <Header src={GITHUB_AVATAR} title={DEVELOPER_NAME!} />
             </Grid>
-            <Grid item container xs={12} sx={{ p: 6, display: "flex" }}>
+            <Grid item container xs={12} sx={{ p: 4, display: "flex" }}>
                 {children}
             </Grid>
             <Grid item xs={12} sx={{ bgcolor: 'text.primary', color: 'background.default', position:"fixed", bottom: 0, width: "100%", maxHeight: "80px" }}>

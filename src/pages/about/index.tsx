@@ -1,32 +1,40 @@
-import { Button, Chip, Grid, Stack } from "@mui/material";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
-import { useRouter } from "next/router";
+import { Button, Chip, Grid, Stack, useMediaQuery } from '@mui/material';
+import { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { useRouter } from 'next/router';
 
-import { Skeleton } from "@/components";
-import { ABOUT_LABELS, EPaths } from "@/const";
+import { Skeleton } from '@/components';
+import { ABOUT_LABELS, EPaths, minWidth } from '@/const';
 
 const About = ( { skills }: InferGetStaticPropsType<typeof getStaticProps> ) => {
     const router = useRouter();
+    const matches = useMediaQuery(minWidth);
     const { Description, Header, ParagraphOne, ParagraphTwo, Title, SecondTitle } = ABOUT_LABELS;
+    const direction = matches ? 'row' : 'column';
+    const col: number = matches ? 6 : 12;
+    const padding: number = matches ? 8 : 0;
     return (
-            <Grid container>
-                <Grid item xs={12}>
+            <Grid container item textAlign='center' paddingLeft={padding} paddingRight={padding}>
+                <Grid item container xs={12}>
                     <Skeleton title={Title} description={Description} />
                 </Grid>
-                <Grid item container xs={12} spacing={3} >
-                    <Grid item xs={6}>
-                        <h2>{Header}</h2>
-                        <p>{ParagraphOne}</p>    
-                        <p>{ParagraphTwo}</p>    
-                    </Grid>
-                    <Grid item xs={6}>
-                        <h2>{SecondTitle}</h2>
-                        <Stack direction="row" spacing={2} useFlexGap flexWrap="wrap">
-                            {skills.map((skill: string, index: number) => <Chip key={index} label={skill} variant="outlined" color="primary" />)}
-                        </Stack>
-                    </Grid>
+                <Grid item container xs={12}>
+                    <Stack spacing={4} direction={direction} paddingLeft={padding} paddingRight={padding}>
+                        <Grid item xs={col}>
+                            <h2>{Header}</h2>
+                            <p>{ParagraphOne}</p>    
+                            <p>{ParagraphTwo}</p>    
+                        </Grid>
+                        <Grid item xs={col}>
+                            <h2>{SecondTitle}</h2>
+                            <Stack direction='row' spacing={2} useFlexGap flexWrap='wrap'>
+                                {skills.map((skill: string, index: number) => <Chip key={index} label={skill} variant='outlined' color='primary' />)}
+                            </Stack>
+                        </Grid>
+                    </Stack>
                 </Grid>
-                <Button variant="outlined" size="large" onClick={() => router.push(EPaths.Contact)}>Contact</Button>
+                <Grid item xs={12}>
+                    <Button variant='outlined' onClick={() => router.push(EPaths.Contact)}>Contact</Button>
+                </Grid>
             </Grid>
         );
 }
@@ -34,9 +42,9 @@ const About = ( { skills }: InferGetStaticPropsType<typeof getStaticProps> ) => 
 export const getStaticProps: GetStaticProps  = async() => {
     let skills = ['JavaScript', 'TypeScript', 'Java', 'Git', 'ReactJs', 'CSS', 'Cypress', 'Jest', 'Python', 'Azure Static Web Apps', 'C / C++', 'C#', 'Jenkins'];
     try {
-        // const response = await fetch("https://skills-api-7070e-default-rtdb.firebaseio.com/skills.json");
+        // const response = await fetch('https://skills-api-7070e-default-rtdb.firebaseio.com/skills.json');
         // const data = await response.json();
-        // skills = data.split(",");
+        // skills = data.split(',');
     } catch (e) {
         console.error(e);
     }
