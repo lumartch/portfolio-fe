@@ -3,7 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { Controller, useForm } from "react-hook-form";
 import { FC, useEffect, useState } from "react";
-import { IProject } from "@/types/Types";
+import { IProject } from "@/interfaces/";
 import Image from "next/image";
 
 type IProjectForm = {

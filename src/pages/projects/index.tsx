@@ -1,4 +1,4 @@
-import { IProject } from "@/types/Types";
+import { IProject } from "@/interfaces/";
 import { GetServerSideProps } from "next";
 
 import { Skeleton, ProjectItem } from "@/components";

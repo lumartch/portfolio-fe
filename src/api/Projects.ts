@@ -1,4 +1,4 @@
-import { IProject } from "@/types/Types";
+import { IProject } from "@/interfaces/";
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
 

@@ -6,7 +6,7 @@ import { DEVELOPER_NAME, DEVELOPER_SUMMARY } from "@/const";
 const Home = ({name, summary}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
   return (
-      <Grid container sx={{ textAlign: "center", alignItems: "center" }} spacing={5}>
+      <Grid container sx={{ textAlign: "center", alignItems: "center" }} spacing={8}>
         <Grid item xs={12}>
           <Typography variant="h3" style={{ textTransform: "uppercase" }}>{name}</Typography>
         </Grid>

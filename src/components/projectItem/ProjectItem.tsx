@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Stack from "@mui/material/Stack";
 import Grid from "@mui/material/Grid";
-import { IProject } from "@/types/Types";
+import { IProject } from "@/interfaces/";
 import { ItemActions } from "./ItemActions";
 import Image from "next/image";
 

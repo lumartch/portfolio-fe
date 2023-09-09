@@ -1,6 +1,6 @@
 import { getAllProjects, getProjectById } from "@/api/Projects";
 import { Skeleton } from "@/components";
-import { IProject } from "@/types/Types";
+import { IProject } from "@/interfaces/";
 import { Button, Chip, Grid } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";

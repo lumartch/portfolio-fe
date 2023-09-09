@@ -1,7 +1,7 @@
 import { Skeleton, ProjectItem, NewProject, EditProject } from "@/components";
 import { useEffect, useState } from "react";
 
-import { IProject } from "@/types/Types";
+import { IProject } from "@/interfaces/";
 import { Button, Grid } from "@mui/material";
 import { createProject, deleteProject, getAllProjects, updateProject } from "@/api/Projects";
 
