@@ -7,7 +7,3 @@ export type IProject = {
   tools: Array<string>;
   projectLink: string;
 }
-
-export interface LinksMap {
-    [key: string]: string
-}

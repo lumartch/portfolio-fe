@@ -3,6 +3,8 @@ export const DEVELOPER_SUMMARY = `Software Developer Engineer with experience in
     To advance my profession as a Full-stack Engineer, I'm now working to improve my tool abilities for ReactJS, Jest, Java, SpringBoot, and Rest API design.`
 
 export const ABOUT_LABELS = {
+    Title: "About me",
+    SecondTitle: "My Skills",
     Header: "Hi visitor!",
     Description: "Greetings! My name is Luis Martínez, and I am a passionate and highly skilled full-stack developer ready to embark on new and exciting coding adventures. With a solid foundation in both front-end and back-end development, I bring a wealth of technical expertise and a drive to create innovative and user-friendly digital solutions.",
     ParagraphOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Cursus sit amet dictum sit amet. Tellus rutrum tellus pellentesque eu. Nec tincidunt praesent semper feugiat nibh sed. Id aliquet risus feugiat in ante metus. Quisque id diam vel quam elementum pulvinar etiam. Quam viverra orci sagittis eu. Vulputate sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum.",

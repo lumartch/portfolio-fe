@@ -3,29 +3,31 @@ import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { useRouter } from "next/router";
 
 import { Skeleton } from "@/components";
-import { ABOUT_LABELS } from "@/const";
+import { ABOUT_LABELS, EPaths } from "@/const";
 
 const About = ( { skills }: InferGetStaticPropsType<typeof getStaticProps> ) => {
     const router = useRouter();
-    const { Description, Header, ParagraphOne, ParagraphTwo} = ABOUT_LABELS;
+    const { Description, Header, ParagraphOne, ParagraphTwo, Title, SecondTitle } = ABOUT_LABELS;
     return (
-            <div>
-                <Skeleton title="About me" description={Description} />
-                <Grid container spacing={3}>
+            <Grid container>
+                <Grid item xs={12}>
+                    <Skeleton title={Title} description={Description} />
+                </Grid>
+                <Grid item container xs={12} spacing={3} >
                     <Grid item xs={6}>
                         <h2>{Header}</h2>
                         <p>{ParagraphOne}</p>    
                         <p>{ParagraphTwo}</p>    
                     </Grid>
                     <Grid item xs={6}>
-                        <h2>My Skills</h2>
+                        <h2>{SecondTitle}</h2>
                         <Stack direction="row" spacing={2} useFlexGap flexWrap="wrap">
                             {skills.map((skill: string, index: number) => <Chip key={index} label={skill} variant="outlined" color="primary" />)}
                         </Stack>
                     </Grid>
                 </Grid>
-                <Button variant="outlined" size="large" onClick={() => router.push("/contact")}>Contact</Button>
-            </div>
+                <Button variant="outlined" size="large" onClick={() => router.push(EPaths.Contact)}>Contact</Button>
+            </Grid>
         );
 }
 

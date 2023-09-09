@@ -1,10 +1,9 @@
 import { FC, ReactNode,  } from "react";
-import { Box, Grid, useTheme } from "@mui/material";
+import { Grid } from "@mui/material";
 
 import { Header } from "../header/Header";
 import { Footer } from "../footer/Footer";
 import { DEVELOPER_NAME, GITHUB_AVATAR } from "@/const";
-import { LinksMap } from "@/interfaces";
 
 type ILayout = {
     children?: ReactNode;
