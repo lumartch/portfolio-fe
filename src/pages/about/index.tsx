@@ -3,24 +3,19 @@ import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { useRouter } from "next/router";
 
 import { Skeleton } from "@/components";
-
-import global from '../../styles/Global.module.css';
-
-const header = "Hi visitor!";
-const description = "Greetings! My name is Luis Martínez, and I am a passionate and highly skilled full-stack developer ready to embark on new and exciting coding adventures. With a solid foundation in both front-end and back-end development, I bring a wealth of technical expertise and a drive to create innovative and user-friendly digital solutions.";
-const paragraphOne = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Cursus sit amet dictum sit amet. Tellus rutrum tellus pellentesque eu. Nec tincidunt praesent semper feugiat nibh sed. Id aliquet risus feugiat in ante metus. Quisque id diam vel quam elementum pulvinar etiam. Quam viverra orci sagittis eu. Vulputate sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum.";
-const paragraphTwo = "Aliquam id diam maecenas ultricies mi eget mauris. A cras semper auctor neque vitae tempus quam pellentesque. Ipsum a arcu cursus vitae congue mauris rhoncus aenean vel. Dolor sit amet consectetur adipiscing. Elementum nisi quis eleifend quam adipiscing vitae proin sagittis nisl. Risus nec feugiat in fermentum. Hendrerit dolor magna eget est lorem. Ligula ullamcorper malesuada proin libero nunc consequat.";
+import { ABOUT_LABELS } from "@/const";
 
 const About = ( { skills }: InferGetStaticPropsType<typeof getStaticProps> ) => {
     const router = useRouter();
+    const { Description, Header, ParagraphOne, ParagraphTwo} = ABOUT_LABELS;
     return (
-            <div className={global.container}>
-                <Skeleton title="About me" description={description}/>
+            <div>
+                <Skeleton title="About me" description={Description} />
                 <Grid container spacing={3}>
                     <Grid item xs={6}>
-                        <h2>{header}</h2>
-                        <p>{paragraphOne}</p>    
-                        <p>{paragraphTwo}</p>    
+                        <h2>{Header}</h2>
+                        <p>{ParagraphOne}</p>    
+                        <p>{ParagraphTwo}</p>    
                     </Grid>
                     <Grid item xs={6}>
                         <h2>My Skills</h2>
@@ -35,11 +30,11 @@ const About = ( { skills }: InferGetStaticPropsType<typeof getStaticProps> ) => 
 }
 
 export const getStaticProps: GetStaticProps  = async() => {
-    let skills = [];
+    let skills = ['JavaScript', 'TypeScript', 'Java', 'Git', 'ReactJs', 'CSS', 'Cypress', 'Jest', 'Python', 'Azure Static Web Apps', 'C / C++', 'C#', 'Jenkins'];
     try {
-        const response = await fetch("https://skills-api-7070e-default-rtdb.firebaseio.com/skills.json");
-        const data = await response.json();
-        skills = data.split(",");
+        // const response = await fetch("https://skills-api-7070e-default-rtdb.firebaseio.com/skills.json");
+        // const data = await response.json();
+        // skills = data.split(",");
     } catch (e) {
         console.error(e);
     }

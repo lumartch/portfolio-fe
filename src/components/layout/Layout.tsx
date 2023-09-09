@@ -11,18 +11,12 @@ type ILayout = {
 }
 
 export const Layout:FC<ILayout> = ({ children }) => {
-    const links: LinksMap = {
-        Home: "/",
-        Contact: "/contact",
-        Projects: "/projects",
-        About: "/about"
-    };
     return (
         <Grid item container xs={12} 
             sx={{ bgcolor: 'background.default', color: 'text.primary', display: "block", 
             flexDirection: "row", justifyContent: "flex-start", position: "absolute", minHeight: "100%" }}>
             <Grid item xs={12} sx={{ p: 4, maxHeight: "140px", display: "flex" }}>
-                <Header src={GITHUB_AVATAR} title={DEVELOPER_NAME!} links={links}/>
+                <Header src={GITHUB_AVATAR} title={DEVELOPER_NAME!} />
             </Grid>
             <Grid item container xs={12} sx={{ p: 6, display: "flex" }}>
                 {children}

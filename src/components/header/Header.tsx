@@ -1,23 +1,22 @@
-import { FC, ReactNode, useContext } from "react";
-import { Avatar, Box, Button, Grid, IconButton, Typography, useTheme } from "@mui/material";
+import { FC, useContext } from "react";
+import { Avatar, Button, Grid, IconButton, Typography, useTheme } from "@mui/material";
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { ColorModeContext } from "../theme/ColorModeContext";
-import { LINKEDIN_URI } from "@/const";
+import { LINKEDIN_URI, EPaths } from "@/const";
 import Link from "next/link";
 
 import layoutStyle from './Header.module.css';
-import { LinksMap } from "@/interfaces";
 
 type IHeader = {
   src?: string;
   title: string;
-  links: LinksMap; 
 };
 
-export const Header: FC<IHeader> = ({ src, title, links }) => {
+export const Header: FC<IHeader> = ({ src, title }) => {
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
+  const paths: typeof EPaths = EPaths; 
   const linkTheme = theme.palette.mode === 'dark' ? `${layoutStyle.link} ${layoutStyle.white}` : `${layoutStyle.link}`;
   return (
     <Grid item container xs={12} sx={{display: "flex", flexDirection: "row", justifyContent: "space-evenly", textTransform: "uppercase"}}>
@@ -27,9 +26,9 @@ export const Header: FC<IHeader> = ({ src, title, links }) => {
         </Button>
       </Grid>
       <Grid item sx={{ display: "flex", flexDirection: "row", alignItems: "center" }}> </Grid>
-      { Object.keys(links).map((key: string, index: number) => (
+      { Object.entries(paths).map((path: string[], index: number) => (
         <Grid item key={index} sx={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-          <Link className={linkTheme} href={links[key]}>{key}</Link>
+          <Link className={linkTheme} href={path[1]}>{path[0]}</Link>
         </Grid> 
       ))}
       <Grid item sx={{ display: "flex", flexDirection: "row", alignItems: "center" }}> </Grid>

@@ -1,17 +1,6 @@
-.skelleton {
-  text-align: center;
-}
-
-.skelleton h1 {
-  font-size: 40px;
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  font-weight: 700;
-}
-
 .divider {
   height: 5px;
-  width: 50px;
+  width: 150px;
   background: #1976d2;
   border-radius: 5px;
   margin: 20px auto;

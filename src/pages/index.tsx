@@ -1,20 +1,18 @@
 import { GetStaticProps, InferGetStaticPropsType } from "next";
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import { useRouter } from "next/router";
-import { DEVELOPER_NAME, DEVELOPER_SUMMARY } from "@/const";
+import { DEVELOPER_NAME, DEVELOPER_SUMMARY, EPaths } from "@/const";
+import { Skeleton } from "@/components";
 
 const Home = ({name, summary}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
   return (
       <Grid container sx={{ textAlign: "center", alignItems: "center" }} spacing={8}>
         <Grid item xs={12}>
-          <Typography variant="h3" style={{ textTransform: "uppercase" }}>{name}</Typography>
+          <Skeleton title={name} description={summary} />
         </Grid>
         <Grid item xs={12}>
-          <Typography>{summary}</Typography>
-        </Grid>
-        <Grid item xs={12}>
-          <Button variant="outlined" size="large" onClick={() => router.push("/projects")}>My Proyects</Button>
+          <Button variant="outlined" size="large" onClick={() => router.push(EPaths.Projects)}>My Proyects</Button>
         </Grid>
       </Grid>
     );
