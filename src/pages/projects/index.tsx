@@ -4,9 +4,8 @@ import { GetServerSideProps } from "next";
 import { Skeleton, ProjectItem } from "@/components";
 import { getAllProjects } from "@/api/Projects";
 import { Grid, useMediaQuery } from "@mui/material";
-import { minWidth } from "@/const";
+import { PROJECTS_LABELS, minWidth } from "@/const";
 
-const description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Cursus sit amet dictum sit amet. Tellus rutrum tellus pellentesque eu. Nec tincidunt praesent semper feugiat nibh sed.";
 
 type IProps = {
     projects: Array<IProject>
@@ -15,10 +14,11 @@ type IProps = {
 const Projects = ({ projects }: IProps) => {
     const matches = useMediaQuery(minWidth); // TODO: Handle correctly the media size
     const padding: number = matches ? 16 : 0;
+    const { Title, Description } = PROJECTS_LABELS;
     return (
         <Grid container sx={{ textAlign: 'center', alignItems: 'center' }} spacing={8} paddingLeft={padding} paddingRight={padding}>
             <Grid item xs={12}>
-                <Skeleton title="Projects" description={description} />
+                <Skeleton title={Title} description={Description} />
             </Grid>
             <Grid item xs={12}>
                 {/* {projects.map((project: IProject, index: number) => 
@@ -30,7 +30,7 @@ const Projects = ({ projects }: IProps) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async() => {
-    let projects = [];
+    let projects: Array<IProject> = [];
     try {
         // projects = await getAllProjects();d
     } catch (e) {
