@@ -6,7 +6,7 @@ import { Skeleton } from '@/components';
 
 const Home = ({name, summary}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
-  const matches = useMediaQuery(minWidth);
+  const matches = useMediaQuery(minWidth); // TODO: Handle correctly the media size
   const padding: number = matches ? 16 : 0;
   
   return (

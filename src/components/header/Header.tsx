@@ -3,7 +3,7 @@ import { Avatar, Button, Grid, IconButton, Stack, Typography, useMediaQuery, use
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { ColorModeContext } from '../theme/ColorModeContext';
-import { LINKEDIN_URI, EPaths } from '@/const';
+import { LINKEDIN_URI, EPaths, minWidth } from '@/const';
 import Link from 'next/link';
 
 import layoutStyle from './Header.module.css';
@@ -17,7 +17,7 @@ export const Header: FC<IHeader> = ({ src, title }) => {
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
   const paths: typeof EPaths = EPaths; 
-  const matches = useMediaQuery('(min-width:600px)');
+  const matches = useMediaQuery(minWidth); // TODO: Handle correctly the media size
   const direction = matches ? 'row' : 'column';
   return (
     <Grid item container xs={12} sx={{display: 'flex', flexDirection: 'row', textTransform: 'uppercase'}}>

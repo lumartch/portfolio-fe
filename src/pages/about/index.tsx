@@ -7,13 +7,13 @@ import { ABOUT_LABELS, EPaths, minWidth } from '@/const';
 
 const About = ( { skills }: InferGetStaticPropsType<typeof getStaticProps> ) => {
     const router = useRouter();
-    const matches = useMediaQuery(minWidth);
+    const matches = useMediaQuery(minWidth); // TODO: Handle correctly the media size
     const { Description, Header, ParagraphOne, ParagraphTwo, Title, SecondTitle } = ABOUT_LABELS;
     const direction = matches ? 'row' : 'column';
     const col: number = matches ? 6 : 12;
     const padding: number = matches ? 8 : 0;
     return (
-            <Grid container item textAlign='center' paddingLeft={padding} paddingRight={padding}>
+            <Grid container item textAlign='center' spacing={4} paddingLeft={padding} paddingRight={padding}>
                 <Grid item container xs={12}>
                     <Skeleton title={Title} description={Description} />
                 </Grid>
