@@ -19,7 +19,7 @@ export const ABOUT_LABELS = {
 
 export const PROJECTS_LABELS = {
     Title: 'Projects',
-    Description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Cursus sit amet dictum sit amet. Tellus rutrum tellus pellentesque eu. Nec tincidunt praesent semper feugiat nibh sed. Id aliquet risus feugiat in ante metus. Quisque id diam vel quam elementum pulvinar etiam. Quam viverra orci sagittis eu. Vulputate sapien nec sagittis aliquam malesuada bibendum arcu vitae elementum.',
+    Description: 'Over the course of my academic and professional journey, I have engaged in numerous projects encompassing a wide range of technologies. As part of my evolution as a developer, I took it upon myself to ensure code management through the utilization of Git. I will be listing several of these projects below, which will include this portfolio, along with a backend system designed to simplify the handling of much of this information.',
 }
 
 export const CONTACT_LABELS = {

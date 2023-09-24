@@ -1,12 +1,10 @@
 import { FC, useContext } from 'react';
-import { Avatar, Button, Grid, IconButton, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
+import { Avatar, Button, Grid, Stack, useMediaQuery, useTheme } from '@mui/material';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { ColorModeContext } from '../theme/ColorModeContext';
 import { LINKEDIN_URI, EPaths, minWidth } from '@/const';
 import Link from 'next/link';
-
-import layoutStyle from './Header.module.css';
 
 type IHeader = {
   src?: string;
@@ -23,7 +21,7 @@ export const Header: FC<IHeader> = ({ src, title }) => {
     <Grid item container xs={12} sx={{display: 'flex', flexDirection: 'row', textTransform: 'uppercase'}}>
       <Stack spacing={2} direction={direction} sx={{ width: '100%', justifyContent: 'space-evenly'}}>
         <Grid item sx={{ display: 'flex', flexDirection: direction, alignItems: 'center' }}>
-          <Button href={LINKEDIN_URI} startIcon={<Avatar alt='logo' src={src} />} sx={{ fontSize: '1.1rem', color: 'text.primary' }}>
+          <Button startIcon={<Avatar alt='logo' src={src} />} href={LINKEDIN_URI!} target='_blank' sx={{ fontSize: '1.1rem', color: 'text.primary' }}>
             {title}
           </Button>
         </Grid>
