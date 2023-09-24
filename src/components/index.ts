@@ -4,5 +4,6 @@ export { Header } from './header/Header';
 export { Skeleton } from './skeleton/Skeleton';
 export { ProjectItem } from './projectItem/ProjectItem';
 export { ProfileItem } from './profileItem/ProfileItem';
+export { ProjectList } from './projectList/ProjectList';
 export { Theme } from './theme/Theme';
 export { ColorModeContext } from './theme/ColorModeContext';

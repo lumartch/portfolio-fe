@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next';
 import { Grid, Tab, Tabs, useMediaQuery } from '@mui/material';
 
-import { ProfileItem, Skeleton } from '@/components';
+import { ProfileItem, ProjectList, Skeleton } from '@/components';
 import { DEVELOPER_GIT_USER, PROJECTS_LABELS, minWidth } from '@/const';
 import { JsonIProfile } from '@/interfaces/';
 import { ApiHandler } from '@/api';
@@ -16,9 +16,9 @@ const Projects = ({ profile }: IProps) => {
     const matches = useMediaQuery(minWidth); // TODO: Handle correctly the media size
     const padding: number = matches ? 16 : 0;
     const { Title, Description } = PROJECTS_LABELS;
-    const [tabName, setTabName] = useState<string>('github');
+    const [gitSource, setGitSource] = useState<string>('github');
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-        setTabName(newValue);
+        setGitSource(newValue);
     };
     return (
         <Grid container sx={{ textAlign: 'center', alignItems: 'center' }} spacing={8} paddingLeft={padding} paddingRight={padding}>
@@ -26,13 +26,14 @@ const Projects = ({ profile }: IProps) => {
                 <Skeleton title={Title} description={Description} />
             </Grid>
             <Grid item xs={12}>
-                <Tabs value={tabName} onChange={handleChange} textColor="secondary" indicatorColor="secondary" centered>
+                <Tabs value={gitSource} onChange={handleChange} textColor="secondary" indicatorColor="secondary" centered>
                     { Object.keys(profile).map(( value: string, index: number) => <Tab key={index} value={value} label={value} />)}
                 </Tabs>
             </Grid>
             <Grid item xs={12}>
-                { Object.entries(profile).filter((entry) => entry[0] === tabName).map((profile, index: number) => <ProfileItem key={index} profile={profile[1]}/>)}
+                { Object.entries(profile).filter((entry) => entry[0] === gitSource).map((profile, index: number) => <ProfileItem key={index} profile={profile[1]}/>)}
             </Grid>
+            <Grid item xs={12}><ProjectList gitSource={gitSource} /></Grid>
         </Grid>
     );
 }
