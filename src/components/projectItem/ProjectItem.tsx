@@ -11,7 +11,7 @@ type IProjectItem = {
 export const ProjectItem: FC<IProjectItem> = ({ project }) => {
     return (
         <Grid container spacing={6} sx={{ pb: "40px" }}>
-            <Grid item md={6}>
+            {/* <Grid item md={6}>
                 <Image
                     src={project.imageUrl}
                     alt={project.name}
@@ -24,7 +24,7 @@ export const ProjectItem: FC<IProjectItem> = ({ project }) => {
                 <h3>{project.name}</h3>
                 <div>{project.description}</div>
                 </Stack>
-            </Grid>
+            </Grid> */}
         </Grid>
     );
 }

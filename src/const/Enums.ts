@@ -4,3 +4,9 @@ export enum EPaths {
     Projects = "/projects",
     About = "/about"
 }
+
+export enum EApiPaths {
+    BASE_PATH = '/api/user',
+    INFO = '/info',
+    REPOS = '/repos'
+}

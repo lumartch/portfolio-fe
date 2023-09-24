@@ -11,12 +11,12 @@ type IProps = {
     project: IProject;
 }
 
-const Project: FC<IProps> = ({ project }) => {
+const Project: FC = () => {
     const router = useRouter();
-    const { name, description, overview, imageUrl, tools, projectLink } = project;
+    // const { name, description, overview, imageUrl, tools, projectLink } = project;
     return (
         <>
-            <Grid container direction={"column"} alignItems="center" justifyContent="center" gap={2}>
+            {/* <Grid container direction={"column"} alignItems="center" justifyContent="center" gap={2}>
                 <Skeleton title={name} description={description} />
                 <Grid item>
                     <Button variant="contained" size="large" onClick={() => router.push("/projects")}>My Projects</Button>
@@ -50,40 +50,40 @@ const Project: FC<IProps> = ({ project }) => {
                 <Grid item>
                     { projectLink ? <Link href={projectLink}><Button variant="outlined">See project</Button></Link> : null }
                 </Grid>
-            </Grid>
+            </Grid> */}
         </>
     );
 }
 
-export async function getStaticPaths() {
-    try {
-        const projects = await getAllProjects();
-        const paths = projects.map(( project: IProject ) => {
-            return { params: { id: project._id!.toString() } }
-        })
-        return {
-            paths, 
-            fallback: false
-        }
-    } catch (e) {
-        console.error(e);
-    }
-}
+// export async function getStaticPaths() {
+//     try {
+//         const projects = await getAllProjects();
+//         const paths = projects.map(( project: IProject ) => {
+//             return { params: { id: project._id!.toString() } }
+//         })
+//         return {
+//             paths, 
+//             fallback: false
+//         }
+//     } catch (e) {
+//         console.error(e);
+//     }
+// }
 
-export async function getStaticProps({ params } :any) {
-    try {
-        const project = await getProjectById(params.id);
-        return {
-            props: {
-                project,
-            },
-            revalidate: 4
-        }
-    } catch (e) {
-        return {
-            notFound: true
-        }
-    }
-}
+// export async function getStaticProps({ params } :any) {
+//     try {
+//         const project = await getProjectById(params.id);
+//         return {
+//             props: {
+//                 project,
+//             },
+//             revalidate: 4
+//         }
+//     } catch (e) {
+//         return {
+//             notFound: true
+//         }
+//     }
+// }
 
 export default Project;

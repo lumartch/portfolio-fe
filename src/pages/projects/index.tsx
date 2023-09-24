@@ -1,17 +1,18 @@
-import { IProject } from "@/interfaces/";
-import { GetServerSideProps } from "next";
+import { IProfile, IProject, JsonIProfile } from '@/interfaces/';
+import { GetServerSideProps } from 'next';
 
-import { Skeleton, ProjectItem } from "@/components";
-import { getAllProjects } from "@/api/Projects";
-import { Grid, useMediaQuery } from "@mui/material";
-import { PROJECTS_LABELS, minWidth } from "@/const";
+import { Skeleton, ProjectItem } from '@/components';
+import { Grid, useMediaQuery } from '@mui/material';
+import { DEVELOPER_GIT_USER, PROJECTS_LABELS, minWidth } from '@/const';
+import { ApiHandler } from '@/api';
 
 
 type IProps = {
-    projects: Array<IProject>
+    profile: JsonIProfile;
+    projects: IProject[];
 };
 
-const Projects = ({ projects }: IProps) => {
+const Projects = ({ projects, profile }: IProps) => {
     const matches = useMediaQuery(minWidth); // TODO: Handle correctly the media size
     const padding: number = matches ? 16 : 0;
     const { Title, Description } = PROJECTS_LABELS;
@@ -20,25 +21,28 @@ const Projects = ({ projects }: IProps) => {
             <Grid item xs={12}>
                 <Skeleton title={Title} description={Description} />
             </Grid>
-            <Grid item xs={12}>
-                {/* {projects.map((project: IProject, index: number) => 
-                    <ProjectItem key={index} project={project} />
-                )} */}
-            </Grid>
+            <Grid item xs={12}></Grid>
+            <Grid item xs={12}></Grid>
         </Grid>
     );
 }
 
 export const getServerSideProps: GetServerSideProps = async() => {
-    let projects: Array<IProject> = [];
+    let projects: IProject[] = [];
+    let profile: JsonIProfile = {};
+    ApiHandler.getInstance();
     try {
-        // projects = await getAllProjects();d
+        const { data: profileData } = await ApiHandler.getInfo(DEVELOPER_GIT_USER!);
+        const { data: projectsData } = await ApiHandler.getRepos(DEVELOPER_GIT_USER!);
+        profile = profileData;
+        projects = projectsData;
     } catch (e) {
-        console.error(e);
+        console.error(`ERROR THROWN BY SERVER ${e}`);
     }
     return {
         props: {
-            projects: projects
+            projects: projects,
+            profile: profile,
         }
     }
 }

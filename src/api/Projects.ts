@@ -40,13 +40,13 @@ export const createProject = async (project: IProject) => {
 
 export const updateProject = async (project: IProject) => {
     try {
-        const response = await fetch(`${SERVER_URL}/projects/${project._id}`, {
-            method: 'PUT',
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(project),
-        });
-        const projectsJson = await response.json();
-        return projectsJson;
+        // const response = await fetch(`${SERVER_URL}/projects/${project._id}`, {
+        //     method: 'PUT',
+        //     headers: { "Content-Type": "application/json" },
+        //     body: JSON.stringify(project),
+        // });
+        // const projectsJson = await response.json();
+        // return projectsJson;
     } catch (error) {
         console.error(error);
         return {};
