@@ -10,3 +10,8 @@ export enum EApiPaths {
     INFO = '/info',
     REPOS = '/repos'
 }
+
+export enum EGitSource {
+    GITHUB = 'github', 
+    GITLAB = 'gitlab'
+}

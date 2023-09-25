@@ -19,7 +19,7 @@ export const ApiHandler = (() => {
         getInfo: async (username: string, gitSource: string = 'all') => {
             return await instance.axiosInstance.get(`${username}${EApiPaths.INFO}`, { params: {git_source: gitSource} });
         },
-        getRepos: async (username: string, archived: boolean = false, gitSource: string = 'all') => {
+        getRepos: async (username: string, archived: Boolean = false, gitSource: string = 'all') => {
             return await instance.axiosInstance.get(`${username}${EApiPaths.REPOS}`, { params: {archived: archived, git_source: gitSource} });
         }
     };

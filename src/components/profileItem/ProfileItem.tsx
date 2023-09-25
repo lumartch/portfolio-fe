@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardActions, CardContent, CardMedia, Typography } from '@mui/material';
+import { Box, Button, Card, CardActions, CardContent, CardMedia, Typography, useTheme } from '@mui/material';
 import { FC } from 'react';
 
 import { IProfile } from '@/interfaces'
@@ -8,9 +8,10 @@ type IProfileItem = {
 }
 
 export const ProfileItem:FC<IProfileItem> = ({ profile }) => {
+    const theme = useTheme();
     const { user_id, username, name, git_uri, avatar_uri, email, bio } = profile;
     return (
-        <Card sx={{ display: 'flex' }}>
+        <Card variant={ theme.palette.mode === 'dark' ? 'elevation' : 'outlined' } sx={{ display: 'flex' } }>
             <CardMedia
                 component='img'
                 sx={{ width: 151 }}

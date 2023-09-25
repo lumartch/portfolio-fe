@@ -27,7 +27,7 @@ const Projects = ({ profile }: IProps) => {
             </Grid>
             <Grid item xs={12}>
                 <Tabs value={gitSource} onChange={handleChange} textColor="secondary" indicatorColor="secondary" centered>
-                    { Object.keys(profile).map(( value: string, index: number) => <Tab key={index} value={value} label={value} />)}
+                    { Object.keys(profile).map(( value: string, index: number) => <Tab key={index} value={value} label={value} />) }
                 </Tabs>
             </Grid>
             <Grid item xs={12}>

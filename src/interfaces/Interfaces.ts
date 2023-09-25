@@ -1,10 +1,10 @@
 export type IProject = {
   source: string;
   id: number;
-  nam: string;
+  name: string;
   full_name: string;
   html_url: string;
-  archived: boolean;
+  archived: Boolean;
   git_url: string;
   ssh_url: string;
   clone_url: string;
