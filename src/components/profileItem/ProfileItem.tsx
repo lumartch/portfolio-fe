@@ -18,8 +18,8 @@ export const ProfileItem:FC<IProfileItem> = ({ profile }) => {
                 image={avatar_uri}
                 alt={`${username}'s profile image.`}
             />
-            <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
-                <CardContent sx={{ flex: '1 0 auto', overflow: 'auto' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', overflow: 'auto' }}>
+                <CardContent sx={{ flex: '1 0 auto' }}>
                     <Typography component='div' variant='h5'>
                         {name}
                     </Typography>
