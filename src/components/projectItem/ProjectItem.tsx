@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { Alert, Box, Button, Card, CardActions, CardContent, Chip, Grid, Snackbar, Typography, useTheme } from '@mui/material';
+import { Alert, Box, Button, Card, CardActions, CardContent, Chip, Grid, Snackbar, Tooltip, Typography, useTheme } from '@mui/material';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 import { IProject } from '@/interfaces/';
@@ -24,23 +24,26 @@ export const ProjectItem: FC<IProjectItem> = ({ project }) => {
 
     return (
     <>
-        <Card variant={ theme.palette.mode === 'dark' ? 'elevation' : 'outlined' }>
+        <Card variant={ theme.palette.mode === 'dark' ? 'elevation' : 'outlined' } sx={{ overflow: 'scroll'}} >
             <CardContent>
                 <Box sx={{rowGap: 2}}>
-                    <Typography variant='h5' sx={{ fontWeight: 700 }} color='text.primary' gutterBottom>
-                        {full_name}
-                    </Typography>
+                    <Tooltip title={full_name}>
+                        <Typography variant='h5' color='text.primary' gutterBottom 
+                            sx={{ fontWeight: 700, overflow:'hidden', whiteSpace:'nowrap',  textOverflow: 'ellipsis' }} >
+                            {full_name}
+                        </Typography>
+                    </Tooltip>
                     <Typography variant='subtitle1' sx={{ fontStyle: 'italic' }} gutterBottom>
                         [Id: {id} | {name}]
                     </Typography>
-                    <Chip label={default_branch} variant='outlined' color='primary'/>
+                    <Chip label={default_branch} variant='outlined' color='primary' sx={{ marginBottom: 1}}/>
                     <Typography variant='subtitle2' gutterBottom>
                         Created at: {created_at}
                     </Typography>
                 </Box>
             </CardContent>
             <CardActions>
-                <Box sx={{ display: 'flex', width: '100%', justifyContent: 'space-evenly' }}>
+                <Box sx={{ display: 'flex', width: '100%', justifyContent: 'center' }}>
                     <CopyToClipboard text={git_url}>
                         <Button color='primary' onClick={handleCopiedToClipBoard}>
                             Git URL

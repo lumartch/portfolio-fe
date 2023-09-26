@@ -14,7 +14,7 @@ export const ProfileItem:FC<IProfileItem> = ({ profile }) => {
         <Card variant={ theme.palette.mode === 'dark' ? 'elevation' : 'outlined' } sx={{ display: 'flex' } }>
             <CardMedia
                 component='img'
-                sx={{ width: 151 }}
+                sx={{ width: '150px' }}
                 image={avatar_uri}
                 alt={`${username}'s profile image.`}
             />
