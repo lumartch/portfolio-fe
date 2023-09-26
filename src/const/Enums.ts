@@ -1,8 +1,8 @@
 export enum EPaths {
     Home = "/",
-    Contact = "/contact",
     Projects = "/projects",
-    About = "/about"
+    About = "/about",
+    Contact = "/contact",
 }
 
 export enum EApiPaths {
