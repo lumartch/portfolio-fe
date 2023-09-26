@@ -24,7 +24,7 @@ export const ProjectItem: FC<IProjectItem> = ({ project }) => {
 
     return (
     <>
-        <Card variant={ theme.palette.mode === 'dark' ? 'elevation' : 'outlined' } sx={{ overflow: 'scroll'}} >
+        <Card variant={ theme.palette.mode === 'dark' ? 'elevation' : 'outlined' }>
             <CardContent>
                 <Box sx={{rowGap: 2}}>
                     <Tooltip title={full_name}>
