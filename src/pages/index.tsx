@@ -15,7 +15,7 @@ const Home = ({name, summary}: InferGetStaticPropsType<typeof getStaticProps>) =
           <Skeleton title={name} description={summary} />
         </Grid>
         <Grid item xs={12}>
-          <Button variant='outlined' size='large' onClick={() => router.push(EPaths.Projects)}>My Proyects</Button>
+          <Button variant='outlined' size='large' onClick={() => router.push(EPaths.Projects)}>My Projects</Button>
         </Grid>
       </Grid>
     );
