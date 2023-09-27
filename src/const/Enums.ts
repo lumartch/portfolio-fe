@@ -6,7 +6,8 @@ export enum EPaths {
 }
 
 export enum EApiPaths {
-    BASE_PATH = '/api/user',
+    BASE_PATH = '/api/v1',
+    USER = '/user',
     INFO = '/info',
     REPOS = '/repos'
 }
