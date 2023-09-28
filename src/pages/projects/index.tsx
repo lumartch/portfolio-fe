@@ -10,7 +10,7 @@ import { ApiHandler } from '@/api';
 const Projects = () => {
     const matches = useMediaQuery(minWidth); // TODO: Handle correctly the media size
     const padding: number = matches ? 16 : 0;
-    const [profile, setProfile] = useState<IProfile>({});
+    const [profile, setProfile] = useState<IProfile>();
     const { Title, Description } = PROJECTS_LABELS;
     const [gitSource, setGitSource] = useState<string>(EGitSource.GITHUB);
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -46,7 +46,7 @@ const Projects = () => {
                 </Tabs>
             </Grid>
             <Grid item xs={12}>
-                { isLoading ? <Loader /> : <ProfileItem profile={profile}/> }
+                { isLoading ? <Loader /> : <ProfileItem profile={profile!}/> }
             </Grid>
             <Grid item xs={12}><ProjectList gitSource={gitSource} /></Grid>
         </Grid>
