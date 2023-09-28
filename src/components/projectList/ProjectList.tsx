@@ -4,7 +4,7 @@ import { Button, Grid, Menu, MenuItem, Typography, useMediaQuery } from '@mui/ma
 import { ApiHandler } from '@/api';
 import { IProject } from '@/interfaces';
 import { DEVELOPER_GIT_USER, minWidth } from '@/const';
-import { ProjectItem } from '../projectItem/ProjectItem';
+import { ProjectItem, Loader} from '@/components';
 
 type IProjectList = {
     gitSource: string;
@@ -16,6 +16,8 @@ export const ProjectList:FC<IProjectList> = ({ gitSource }) => {
     const [projects, setProjects] = useState<IProject[]>([]);
     const [archived, setArchived] = useState<Boolean>(false);
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+
     const open = Boolean(anchorEl);
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -24,8 +26,13 @@ export const ProjectList:FC<IProjectList> = ({ gitSource }) => {
 
     const handleClose = (archived: Boolean) => {
         setArchived(archived);
+        setIsLoading(true);
         setAnchorEl(null);
     };
+
+    const displayRepos = () => {
+        return projects.map((project: IProject, index: number) => <Grid key={index} xs={12} item> <ProjectItem project={project} /> </Grid> );
+    }
     
     useEffect(() => {
         const updateProjects = async () => {
@@ -33,15 +40,17 @@ export const ProjectList:FC<IProjectList> = ({ gitSource }) => {
             try {
                 const { data: projectsData } = await ApiHandler.getRepos(DEVELOPER_GIT_USER!, archived!, gitSource);
                 setProjects(projectsData);
+                setIsLoading(false);
             } catch (e) {
                 console.error(`ERROR THROWN BY SERVER ${e}`);
             }
         }
+        setIsLoading(true);
         updateProjects();
     }, [archived, gitSource]);
 
     return (
-        <Grid container spacing={4}>
+        <Grid container spacing={4} textAlign='center' display='flex'>
             <Grid item container xs={12} direction={direction} sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
                 <Typography variant='h5' sx={{ textTransform: 'uppercase', letterSpacing: '5px', fontWeight: 700, textAlign: 'initial' }}>
                     Repositories
@@ -57,7 +66,7 @@ export const ProjectList:FC<IProjectList> = ({ gitSource }) => {
                 </Menu>
             </Grid>
             <Grid item container xs={12} spacing={2}>
-                { projects.map((project: IProject, index: number) => <Grid key={index} xs={12} item> <ProjectItem project={project} /> </Grid> ) }
+                { isLoading ? <Loader /> : displayRepos() }
             </Grid>
         </Grid>
     );

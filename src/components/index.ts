@@ -7,3 +7,4 @@ export { ProfileItem } from './profileItem/ProfileItem';
 export { ProjectList } from './projectList/ProjectList';
 export { Theme } from './theme/Theme';
 export { ColorModeContext } from './theme/ColorModeContext';
+export { Loader } from './loader/Loader';
