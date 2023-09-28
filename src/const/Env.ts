@@ -1,7 +1,6 @@
 export const DEVELOPER_NAME = process.env.NEXT_PUBLIC_DEVELOPER_NAME;
 export const DEVELOPER_GIT_USER = process.env.NEXT_PUBLIC_DEVELOPER_GIT_USER;
 export const GITHUB_AVATAR = process.env.NEXT_PUBLIC_GITHUB_AVATAR;
-export const SERVER_URI = process.env.NEXT_PUBLIC_SERVER_URI;
 export const LINKEDIN_URI = process.env.NEXT_PUBLIC_LINKEDIN_PROFILE;
 export const EMAIL_SERVICE_ID = process.env.NEXT_PUBLIC_EMAIL_SERVICE_ID;
 export const EMAIL_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAIL_TEMPLATE_ID;
