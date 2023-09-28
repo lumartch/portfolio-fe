@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { Alert, AlertColor, Box, Button, FormControl, Grid, Snackbar, TextField, useMediaQuery } from '@mui/material';
+import { Alert, AlertColor, Box, Button, CircularProgress, FormControl, Grid, Snackbar, TextField, useMediaQuery } from '@mui/material';
 
 import { Skeleton } from '@/components';
 import { CONTACT_LABELS, EMAIL_PUBLIC_KEY, EMAIL_SERVICE_ID, EMAIL_TEMPLATE_ID, minWidth } from '@/const';
@@ -12,10 +12,12 @@ const Contact = () => {
     const [open, setOpen] = useState<boolean>(false);
     const [message, setMessage] = useState<string>('');
     const [severity, setSeverity] = useState<AlertColor>();
+    const [isSendingEmail, setIsSendingEmail] = useState<boolean>(false);
     const form = useRef<any>(); // TODO: Handle the correct type of reference that matches form and email form
 
     const onSubmit = async(e: { preventDefault: () => void; }) => {
         e.preventDefault();
+        setIsSendingEmail(true);
         emailjs.sendForm(EMAIL_SERVICE_ID!, EMAIL_TEMPLATE_ID!, form.current, EMAIL_PUBLIC_KEY!)
         .then((_) => {
             handleOpen(`Your email was sent correctly! I'll contact you soon! :)`, 'success');
@@ -24,6 +26,7 @@ const Contact = () => {
         })
         .finally(() => {
             form.current.reset();
+            setIsSendingEmail(false);
         });
     }
 
@@ -52,7 +55,7 @@ const Contact = () => {
                             <TextField sx={{ paddingBottom: '40px'}} name='subject' label='Subject...' variant='standard' required />
                             <TextField sx={{ paddingBottom: '40px'}} name='message' size='medium' label='Mesage...' variant='outlined' 
                                 inputProps={{ style: { height: '80px', }, }} required multiline />
-                            <Button type='submit' variant='outlined'>Send email</Button>
+                            <Button type='submit' variant='outlined' disabled={isSendingEmail} >{ isSendingEmail ? <CircularProgress /> : 'Send email' }</Button>
                         </FormControl>
                     </form>
                 </Box>
