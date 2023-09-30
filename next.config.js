@@ -16,6 +16,7 @@ const nextConfig = {
 module.exports = nextConfig
 
 const SERVER_URI = process.env.NEXT_PUBLIC_SERVER_URI;
+const FINANCES_URI = process.env.NEXT_PUBLIC_FINANCES_URI;
 const API_PATH = '/api/v1/:path*';
 module.exports = {
   async rewrites() {
@@ -24,6 +25,10 @@ module.exports = {
         source: API_PATH,
         destination: `${SERVER_URI}${API_PATH}`,
       },
+      {
+        source: '/apps/finances/:path*', 
+        destination: `${FINANCES_URI}/:path*`,
+      }
     ]
   },
 }
