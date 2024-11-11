@@ -4,7 +4,7 @@ export type IProject = {
   name: string;
   full_name: string;
   html_url: string;
-  archived: Boolean;
+  archived: boolean;
   git_url: string;
   ssh_url: string;
   clone_url: string;

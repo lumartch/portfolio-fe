@@ -1,44 +1,44 @@
+import { IProfile } from '@/interfaces';
 import { Box, Button, Card, CardActions, CardContent, CardMedia, Typography, useTheme } from '@mui/material';
-import { FC } from 'react';
-
-import { IProfile } from '@/interfaces'
+import React from 'react';
 
 type IProfileItem = {
     profile: IProfile;
 }
 
-export const ProfileItem:FC<IProfileItem> = ({ profile }) => {
-    const theme = useTheme();
-    const { user_id, username, name, git_uri, avatar_uri, email, bio } = profile;
-    return (
-        <Card variant={ theme.palette.mode === 'dark' ? 'elevation' : 'outlined' } sx={{ display: 'flex' } }>
-            <CardMedia
-                component='img'
-                sx={{ width: '150px' }}
-                image={avatar_uri}
-                alt={`${username}'s profile image.`}
-            />
-            <Box sx={{ display: 'flex', flexDirection: 'column', width: '100%', overflow: 'auto' }}>
-                <CardContent sx={{ flex: '1 0 auto' }}>
-                    <Typography component='div' variant='h5'>
-                        {name}
-                    </Typography>
-                    <Typography variant='subtitle1' color='text.secondary' component='div'>
-                        {username}: {user_id}
-                    </Typography>
-                    <Typography variant='subtitle1' color='text.secondary' component='div'>
-                        {email}
-                    </Typography>
-                    <Typography variant='subtitle1' color='text.secondary' component='div'>
-                        {bio}
-                    </Typography>
-                </CardContent>
-                <CardActions>
-                    <Button color='primary' href={git_uri} target='_blank' sx={{ display: 'flex', width: '100%', alignContent: 'center' }}>
-                        Go to Git Source
-                    </Button>
-                </CardActions>
-            </Box>
-        </Card>
-    );
-}
+export const ProfileItem:React.FC<IProfileItem> = ({ profile }) => {
+  const theme = useTheme();
+  const { avatar_uri, bio, email, git_uri, name, user_id, username } = profile;
+
+  return (
+    <Card sx={{ display: 'flex' } } variant={ theme.palette.mode === 'dark' ? 'elevation' : 'outlined' }>
+      <CardMedia
+        alt={`${username}'s profile image.`}
+        component='img'
+        image={avatar_uri}
+        sx={{ width: '150px' }}
+      />
+      <Box sx={{ display: 'flex', flexDirection: 'column', overflow: 'auto', width: '100%' }}>
+        <CardContent sx={{ flex: '1 0 auto' }}>
+          <Typography component='div' variant='h5'>
+            {name}
+          </Typography>
+          <Typography color='text.secondary' component='div' variant='subtitle1'>
+            {username}: {user_id}
+          </Typography>
+          <Typography color='text.secondary' component='div' variant='subtitle1'>
+            {email}
+          </Typography>
+          <Typography color='text.secondary' component='div' variant='subtitle1'>
+            {bio}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button color='primary' href={git_uri} sx={{ alignContent: 'center', display: 'flex', width: '100%' }} target='_blank'>
+            Go to Git Source
+          </Button>
+        </CardActions>
+      </Box>
+    </Card>
+  );
+};

@@ -1,15 +1,15 @@
 export enum EPaths {
-    Home = "/",
-    Projects = "/projects",
-    About = "/about",
-    Contact = "/contact",
+    About = '/about',
+    Contact = '/contact',
+    Home = '/',
+    Projects = '/projects',
 }
 
 export enum EApiPaths {
     BASE_PATH = '/api/v1',
-    USER = '/user',
     INFO = '/info',
-    REPOS = '/repos'
+    REPOS = '/repos',
+    USER = '/user'
 }
 
 export enum EGitSource {

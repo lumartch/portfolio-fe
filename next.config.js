@@ -1,19 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
         hostname: '*',
-        port: '',
         pathname: '**',
+        port: '',
+        protocol: 'https',
       },
     ],
   },
-}
+  reactStrictMode: true,
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
 
 const SERVER_URI = process.env.NEXT_PUBLIC_SERVER_URI;
 const FINANCES_URI = process.env.NEXT_PUBLIC_FINANCES_URI;
@@ -22,13 +22,13 @@ module.exports = {
   async rewrites() {
     return [
       {
-        source: API_PATH,
         destination: `${SERVER_URI}${API_PATH}`,
+        source: API_PATH,
       },
       {
-        source: '/apps/finances/:path*', 
-        destination: `${FINANCES_URI}/:path*`,
+        destination: `${FINANCES_URI}/:path*`, 
+        source: '/apps/finances/:path*',
       }
-    ]
+    ];
   },
-}
+};

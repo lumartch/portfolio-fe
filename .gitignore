@@ -35,3 +35,9 @@ yarn-error.log*
 next-env.d.ts
 
 .swc/
+
+# VS Code
+/.vscode
+
+# Environment vars
+.env

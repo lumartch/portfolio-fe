@@ -1,11 +1,12 @@
-import { Card, CardContent, CircularProgress, Grid, Stack } from "@mui/material"
+import { CircularProgress, Grid, Stack } from '@mui/material';
+import React from 'react';
 
-export const Loader = () => {
-    return (
-        <Grid container justifyContent='center'>
-            <Stack sx={{ minHeight: '200px', justifyContent: 'space-around'}} direction='column'>
-                <CircularProgress />
-            </Stack>
-        </Grid>
-    );
-}
+export const Loader: React.FC = () => {
+  return (
+    <Grid container justifyContent='center'>
+      <Stack direction='column' sx={{ justifyContent: 'space-around', minHeight: '200px'}}>
+        <CircularProgress />
+      </Stack>
+    </Grid>
+  );
+};

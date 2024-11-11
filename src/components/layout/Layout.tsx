@@ -1,30 +1,18 @@
-import { FC, ReactNode,  } from 'react';
-import { Grid } from '@mui/material';
+import { DEVELOPER_NAME, GITHUB_AVATAR } from '@/consts';
+import { Box, Container } from '@mui/material';
+import React, { PropsWithChildren } from 'react';
 
-import { Header } from '../header/Header';
 import { Footer } from '../footer/Footer';
-import { DEVELOPER_NAME, GITHUB_AVATAR } from '@/const';
+import { Header } from '../header/Header';
 
-type ILayout = {
-    children?: ReactNode;
-}
-
-export const Layout:FC<ILayout> = ({ children }) => {
-    return (
-        <Grid item container xs={12} 
-            sx={{ bgcolor: 'background.default', color: 'text.primary', display: 'block', paddingBottom: '80px',
-            flexDirection: 'row', justifyContent: 'flex-start', position: 'absolute', minHeight: '100%' }}>
-            <Grid item xs={12} sx={{ p: 4, display: 'flex' }}>
-                <Header src={GITHUB_AVATAR} title={DEVELOPER_NAME!} />
-            </Grid>
-            <Grid item container xs={12} sx={{ p: 4, display: 'flex' }}>
-                {children}
-            </Grid>
-            <Grid item xs={12} sx={{ bgcolor: 'text.primary', color: 'background.default', position:'fixed', 
-                bottom: 0, width: '100%', minHeight: '50px', borderRadius: '6px', 
-                display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Footer/>
-            </Grid>
-        </Grid>
-    );
-}
+export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
+  return (
+    <Box sx={{ bgcolor: 'background.default', color: 'text.primary', padding: '32px' }}>
+      <Container>
+        <Header src={GITHUB_AVATAR} title={DEVELOPER_NAME!} />
+        {children}
+      </Container>
+      <Footer/>
+    </Box>
+  );
+};

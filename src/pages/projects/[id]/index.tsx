@@ -1,22 +1,12 @@
-import { getAllProjects, getProjectById } from "@/api/Projects";
-import { Skeleton } from "@/components";
-import { IProject } from "@/interfaces/";
-import { Button, Chip, Grid } from "@mui/material";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { FC } from "react";
+import React from 'react';
 
-type IProps = {
-    project: IProject;
-}
 
-const Project: FC = () => {
-    const router = useRouter();
-    // const { name, description, overview, imageUrl, tools, projectLink } = project;
-    return (
-        <>
-            {/* <Grid container direction={"column"} alignItems="center" justifyContent="center" gap={2}>
+const Project: React.FC = () => {
+//   const router = useRouter();
+  // const { name, description, overview, imageUrl, tools, projectLink } = project;
+  return (
+    <>
+      {/* <Grid container direction={"column"} alignItems="center" justifyContent="center" gap={2}>
                 <Skeleton title={name} description={description} />
                 <Grid item>
                     <Button variant="contained" size="large" onClick={() => router.push("/projects")}>My Projects</Button>
@@ -51,9 +41,9 @@ const Project: FC = () => {
                     { projectLink ? <Link href={projectLink}><Button variant="outlined">See project</Button></Link> : null }
                 </Grid>
             </Grid> */}
-        </>
-    );
-}
+    </>
+  );
+};
 
 // export async function getStaticPaths() {
 //     try {
