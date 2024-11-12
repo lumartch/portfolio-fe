@@ -1,10 +1,6 @@
-export { Footer } from './footer/Footer';
-export { Header } from './header/Header';
-export { Layout } from './layout/Layout';
-export { Loader } from './loader/Loader';
-export { ProfileItem } from './profileItem/ProfileItem';
-export { ProjectItem } from './projectItem/ProjectItem';
-export { ProjectList } from './projectList/ProjectList';
-export { Skeleton } from './skeleton/Skeleton';
-export { ColorModeContext } from './theme/ColorModeContext';
-export { Theme } from './theme/Theme';
+export { GitProfile } from './GitProfile';
+export { Layout, PageInfo } from './layout';
+export { Loader } from './Loader';
+export { Projects } from './projects';
+export { ProjectItem } from './projects/ProjectItem';
+export * from './theme';

@@ -1,4 +1,4 @@
-export type IProject = {
+export interface IProject {
   source: string;
   id: number;
   name: string;
@@ -13,7 +13,7 @@ export type IProject = {
   created_at: string;
 }
 
-export type IProfile = {
+export interface IProfile {
   user_id: number;
   name: string;
   username: string;
@@ -23,6 +23,6 @@ export type IProfile = {
   bio: string;
 }
 
-export type JsonIProfile = {
+export interface JsonIProfile {
   [key: string]: IProfile;
 }

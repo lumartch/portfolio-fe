@@ -1,8 +1,8 @@
-export enum EPaths {
-    About = '/about',
-    Contact = '/contact',
-    Home = '/',
-    Projects = '/projects',
+export enum PagePaths {
+    ABOUT = 'ABOUT',
+    CONTACT = 'CONTACT',
+    HOME = 'HOME',
+    PROJECTS = 'PROJECTS',
 }
 
 export enum EApiPaths {
@@ -13,6 +13,6 @@ export enum EApiPaths {
 }
 
 export enum EGitSource {
-    GITHUB = 'github', 
+    GITHUB = 'github',
     GITLAB = 'gitlab'
 }

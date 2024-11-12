@@ -1,18 +1,28 @@
 import { DEVELOPER_NAME, GITHUB_AVATAR } from '@/consts';
-import { Box, Container } from '@mui/material';
+import { Box, Container, Grid2 } from '@mui/material';
 import React, { PropsWithChildren } from 'react';
 
-import { Footer } from '../footer/Footer';
-import { Header } from '../header/Header';
+import { Footer } from './Footer';
+import { Header } from './Header';
 
 export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
-  return (
-    <Box sx={{ bgcolor: 'background.default', color: 'text.primary', padding: '32px' }}>
-      <Container>
-        <Header src={GITHUB_AVATAR} title={DEVELOPER_NAME!} />
-        {children}
-      </Container>
-      <Footer/>
-    </Box>
-  );
+    const _sx = { 
+        bgcolor: 'background.default', 
+        color: 'text.primary', 
+        padding: '32px'
+    };
+
+    return (
+        <Box>
+            <Box sx={_sx}>
+                <Container>
+                    <Header src={GITHUB_AVATAR} title={DEVELOPER_NAME!} />
+                    <Grid2 container sx={{ alignItems: 'center', textAlign: 'center' }}>
+                        {children}
+                    </Grid2>
+                </Container>
+            </Box>
+            <Footer/>
+        </Box>
+    );
 };

@@ -1,4 +1,3 @@
-export * from './consts';
-export * from './enums';
+export * from './paths';
 export * from './env';
 export * from './labels';

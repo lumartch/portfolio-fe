@@ -9,6 +9,13 @@ import stylisticJs from "@stylistic/eslint-plugin-js";
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   {
+    settings: {
+      react: {
+        version: "detect",
+      },
+    },
+  },
+  {
     files: ["./src/**/*.{js, jsx, ts, tsx, mjs}"],
   },
   {
@@ -27,14 +34,11 @@ export default [
   },
   {
     rules: {
-      indent: ["error", 2],
       "no-multi-spaces": ["error"],
       quotes: ["error", "single"],
       semi: ["error", "always"],
-      indent: ["error", "tab"],
     },
   },
-  // perfectionist.configs["recommended-alphabetical"],
   {
     plugins: {
       perfectionist,
@@ -145,10 +149,11 @@ export default [
       "@stylistic/js": stylisticJs,
     },
     rules: {
-      indent: ["error", 2],
+      indent: ["error", 4],
       "space-before-function-paren": ["error"],
       "comma-spacing": ["error"],
-      "@stylistic/js/indent": ["error", 2],
+      "arrow-spacing": ["error"],
+      "object-curly-spacing": ["error", "always"],
     },
   },
   pluginJs.configs.recommended,
