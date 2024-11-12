@@ -16,3 +16,8 @@ export enum GitSource {
     GITHUB = 'github',
     GITLAB = 'gitlab'
 }
+
+export enum ColorMode {
+    DARK = 'dark',
+    LIGHT = 'light'
+}

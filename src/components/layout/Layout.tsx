@@ -9,7 +9,8 @@ export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
     const _sx = { 
         bgcolor: 'background.default', 
         color: 'text.primary', 
-        padding: '32px'
+        padding: '32px',
+        paddingBottom: '50px'
     };
 
     return (

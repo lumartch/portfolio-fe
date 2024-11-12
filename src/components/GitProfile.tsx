@@ -9,7 +9,7 @@ export const GitProfile: React.FC<Props> = ({ avatar_uri, bio, email, git_uri, n
     const theme = useTheme();
 
     return (
-        <Card sx={{ display: 'flex' } } variant={ theme.palette.mode === 'dark' ? 'elevation' : 'outlined' }>
+        <Card variant={ theme.palette.mode === 'dark' ? 'elevation' : 'outlined' }>
             <CardMedia
                 alt={`${username}'s profile image.`}
                 component='img'

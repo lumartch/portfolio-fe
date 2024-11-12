@@ -1,8 +1,8 @@
 import { ApiHandler } from '@/api';
 import { Loader, ProjectItem } from '@/components';
-import { DEVELOPER_GIT_USER, minWidth } from '@/consts';
+import { DEVELOPER_GIT_USER } from '@/consts';
 import { IProject } from '@/interfaces';
-import { Button, Grid, Menu, MenuItem, Typography, useMediaQuery } from '@mui/material';
+import { Button, Grid2, Menu, MenuItem, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
 interface Props {
@@ -10,8 +10,6 @@ interface Props {
 }
 
 export const Projects: React.FC<Props> = ({ gitSource }) => {
-    const matches = useMediaQuery(minWidth); // TODO: Handle correctly the media size
-    const direction = matches ? 'row' : 'column';
     const [projects, setProjects] = useState<IProject[]>([]);
     const [archived, setArchived] = useState<boolean>(false);
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -30,7 +28,7 @@ export const Projects: React.FC<Props> = ({ gitSource }) => {
     };
 
     const displayRepos = () => {
-        return projects.map((project: IProject, index: number) => <Grid item key={index} xs={12}> <ProjectItem {...project} /> </Grid> );
+        return projects.map((project: IProject, index: number) => <Grid2 key={index} size={{ xs: 12 }}> <ProjectItem {...project} /> </Grid2> );
     };
     
     useEffect(() => {
@@ -49,8 +47,8 @@ export const Projects: React.FC<Props> = ({ gitSource }) => {
     }, [archived, gitSource]);
 
     return (
-        <Grid container display='flex' spacing={4} textAlign='center'>
-            <Grid container direction={direction} item sx={{ display: 'flex', justifyContent: 'space-evenly' }} xs={12}>
+        <>
+            <Grid2 container size={{ xs: 12 }} sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
                 <Typography sx={{ fontWeight: 700, letterSpacing: '5px', textAlign: 'initial', textTransform: 'uppercase' }} variant='h5'>
                     Repositories
                 </Typography>
@@ -63,10 +61,10 @@ export const Projects: React.FC<Props> = ({ gitSource }) => {
                     <MenuItem onClick={() => handleClose(true)}>True</MenuItem>
                     <MenuItem onClick={() => handleClose(false)}>False</MenuItem>
                 </Menu>
-            </Grid>
-            <Grid container item spacing={2} xs={12}>
+            </Grid2>
+            <Grid2 container justifyContent="center" size={{ xs: 12 }} spacing={2}>
                 { isLoading ? <Loader /> : displayRepos() }
-            </Grid>
-        </Grid>
+            </Grid2>
+        </>
     );
 };

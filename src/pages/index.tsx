@@ -11,9 +11,7 @@ const Home: React.FC = ({ name, summary }: InferGetStaticPropsType<typeof getSta
   
     return (
         <>
-            <Grid2>
-                <PageInfo description={summary} title={name} />
-            </Grid2>
+            <PageInfo description={summary} title={name} />
             <Grid2>
                 <Button onClick={() => router.push(PathsRecord[PagePaths.PROJECTS])} size='large' variant='outlined'>My Projects</Button>
             </Grid2>

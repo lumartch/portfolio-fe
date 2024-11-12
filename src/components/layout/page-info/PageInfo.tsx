@@ -11,15 +11,9 @@ interface Props {
 export const PageInfo: React.FC<Props> = ({ description, title }) => {
     return (
         <Grid2 alignContent="center" container direction='column'>
-            <Grid2>
-                <Typography component="h2" variant="h2">{title}</Typography>
-            </Grid2>
-            <Grid2>
-                <div className={dividerStyle}/>
-            </Grid2>
-            <Grid2>
-                <Typography>{description}</Typography>
-            </Grid2>
+            <Typography component="h2" variant="h2">{title}</Typography>
+            <div className={dividerStyle}/>
+            <Typography>{description}</Typography>
         </Grid2>
     );
 };

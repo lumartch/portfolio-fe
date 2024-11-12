@@ -1,4 +1,4 @@
-import { GitSource } from '@/enums';
+import { ColorMode, GitSource } from '@/enums';
 import { IProject } from '@/interfaces/';
 import { Alert, Box, Button, Card, CardActions, CardContent, Chip, Snackbar, Tooltip, Typography, useTheme } from '@mui/material';
 import React, { useState } from 'react';
@@ -7,7 +7,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 type Props = IProject;
 
 export const ProjectItem: React.FC<Props> = ({ clone_url, created_at, default_branch, full_name, git_url, html_url, id, name, source, ssh_url }) => {
-    const theme = useTheme();
+    const { palette } = useTheme();
     const [open, setOpen] = useState<boolean>(false);
 
     const handleCopiedToClipBoard = () => setOpen(true);
@@ -21,7 +21,7 @@ export const ProjectItem: React.FC<Props> = ({ clone_url, created_at, default_br
 
     return (
         <>
-            <Card variant={ theme.palette.mode === 'dark' ? 'elevation' : 'outlined' }>
+            <Card variant={ palette.mode === ColorMode.DARK ? 'elevation' : 'outlined' }>
                 <CardContent>
                     <Box sx={{ rowGap: 2 }}>
                         <Tooltip title={full_name}>

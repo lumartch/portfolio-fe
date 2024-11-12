@@ -1,16 +1,14 @@
 import { ApiHandler } from '@/api';
 import { GitProfile, Loader, PageInfo, Projects as ProjectList } from '@/components';
-import { DEVELOPER_GIT_USER, PROJECTS_LABELS, minWidth } from '@/consts';
+import { DEVELOPER_GIT_USER, PROJECTS_LABELS } from '@/consts';
 import { GitSource } from '@/enums';
 import { IProfile } from '@/interfaces';
-import { Grid, Tab, Tabs, useMediaQuery } from '@mui/material';
+import { Grid2, Tab, Tabs } from '@mui/material';
 import React from 'react';
 import { useEffect, useState } from 'react';
 
 
 const Projects = () => {
-    const matches = useMediaQuery(minWidth); // TODO: Handle correctly the media size
-    const padding: number = matches ? 16 : 0;
     const [profile, setProfile] = useState<IProfile>();
     const [gitSource, setGitSource] = useState<string>(GitSource.GITHUB);
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -43,19 +41,17 @@ const Projects = () => {
     };
 
     return (
-        <Grid container paddingLeft={padding} paddingRight={padding} spacing={5} sx={{ alignItems: 'center', textAlign: 'center' }}>
-            <Grid item xs={12}>
-                <PageInfo description={PROJECTS_LABELS.description} title={PROJECTS_LABELS.title} />
-            </Grid>
-            <Grid item xs={12}>
+        <Grid2 container>
+            <PageInfo description={PROJECTS_LABELS.description} title={PROJECTS_LABELS.title} />
+            <Grid2 size={{ xs: 12 }}>
                 <Tabs centered indicatorColor="secondary" onChange={handleChange} textColor="secondary" value={gitSource}>
                     <Tab label={GitSource.GITHUB} value={GitSource.GITHUB} />
                     <Tab label={GitSource.GITLAB} value={GitSource.GITLAB} />
                 </Tabs>
-            </Grid>
-            <Grid item xs={12}>{ renderGitProfile() }</Grid>
-            <Grid item xs={12}><ProjectList gitSource={gitSource} /></Grid>
-        </Grid>
+            </Grid2>
+            <Grid2 size={{ xs: 12 }} sx={{ margin: 16 }}>{ renderGitProfile() }</Grid2>
+            <ProjectList gitSource={gitSource} />
+        </Grid2>
     );
 };
 

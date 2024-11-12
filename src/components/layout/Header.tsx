@@ -1,12 +1,12 @@
 import { LINKEDIN_URI, PAGE_PATHS_AND_LABELS } from '@/consts';
+import { ColorMode } from '@/enums';
+import { useColorMode } from '@/theme';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { Avatar, Button, useTheme } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import Link from 'next/link';
 import React from 'react';
-
-import { useColorMode } from '../theme';
 
 interface Props {
   src?: string; 
@@ -19,7 +19,7 @@ export const Header: React.FC<Props> = ({ src, title }) => {
     const _size ={ lg: 3, md: 3, xs: 12 };
     const _sxGrid = { alignText: 'center', display: 'flex', justifyContent: 'center' };
     const _sxButton = { color: 'text.primary', fontSize: '1.1rem' };
-    const hasDarkMode = palette.mode === 'dark';
+    const hasDarkMode = palette.mode === ColorMode.DARK;
 
     return (
         <Grid container padding="8px">
