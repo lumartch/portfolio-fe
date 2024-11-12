@@ -1,17 +1,14 @@
-import { EGitSource } from '@/consts';
+import { GitSource } from '@/enums';
 import { IProject } from '@/interfaces/';
 import { Alert, Box, Button, Card, CardActions, CardContent, Chip, Snackbar, Tooltip, Typography, useTheme } from '@mui/material';
 import React, { useState } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-type IProjectItem = {
-    project: IProject;
-}
+type Props = IProject;
 
-export const ProjectItem: React.FC<IProjectItem> = ({ project }) => {
+export const ProjectItem: React.FC<Props> = ({ clone_url, created_at, default_branch, full_name, git_url, html_url, id, name, source, ssh_url }) => {
     const theme = useTheme();
     const [open, setOpen] = useState<boolean>(false);
-    const { clone_url, created_at, default_branch, full_name, git_url, html_url, id, name, source, ssh_url } = project;
 
     const handleCopiedToClipBoard = () => setOpen(true);
 
@@ -34,11 +31,11 @@ export const ProjectItem: React.FC<IProjectItem> = ({ project }) => {
                             </Typography>
                         </Tooltip>
                         <Typography gutterBottom sx={{ fontStyle: 'italic' }} variant='subtitle1'>
-              [Id: {id} | {name}]
+                            [Id: {id} | {name}]
                         </Typography>
                         <Chip color='primary' label={default_branch} sx={{ marginBottom: 1 }} variant='outlined'/>
                         <Typography gutterBottom variant='subtitle2'>
-              Created at: {created_at}
+                            Created at: {created_at}
                         </Typography>
                     </Box>
                 </CardContent>
@@ -55,14 +52,13 @@ export const ProjectItem: React.FC<IProjectItem> = ({ project }) => {
                             </Button>
                         </CopyToClipboard>
                         { 
-                            source === EGitSource.GITHUB 
-                                ? 
+                            source === GitSource.GITHUB 
+                                && 
                                 <CopyToClipboard text={clone_url}>
                                     <Button color='primary' onClick={handleCopiedToClipBoard}>
                                         URL
                                     </Button>
                                 </CopyToClipboard>
-                                : null 
                         }
                     
                         <Button color='primary' href={html_url} target='_blank'>

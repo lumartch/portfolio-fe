@@ -5,14 +5,14 @@ export enum PagePaths {
     PROJECTS = 'PROJECTS',
 }
 
-export enum EApiPaths {
-    BASE_PATH = '/api/v1',
-    INFO = '/info',
-    REPOS = '/repos',
-    USER = '/user'
+export enum ApiPaths {
+    BASE_PATH = 'BASE_PATH',
+    INFO = 'INFO',
+    REPOS = 'REPOS',
+    USER = 'USER'
 }
 
-export enum EGitSource {
+export enum GitSource {
     GITHUB = 'github',
     GITLAB = 'gitlab'
 }

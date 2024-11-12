@@ -1,7 +1,7 @@
 import { ApiHandler } from '@/api';
 import { GitProfile, Loader, PageInfo, Projects as ProjectList } from '@/components';
 import { DEVELOPER_GIT_USER, PROJECTS_LABELS, minWidth } from '@/consts';
-import { EGitSource } from '@/enums';
+import { GitSource } from '@/enums';
 import { IProfile } from '@/interfaces';
 import { Grid, Tab, Tabs, useMediaQuery } from '@mui/material';
 import React from 'react';
@@ -12,7 +12,7 @@ const Projects = () => {
     const matches = useMediaQuery(minWidth); // TODO: Handle correctly the media size
     const padding: number = matches ? 16 : 0;
     const [profile, setProfile] = useState<IProfile>();
-    const [gitSource, setGitSource] = useState<string>(EGitSource.GITHUB);
+    const [gitSource, setGitSource] = useState<string>(GitSource.GITHUB);
     const [isLoading, setIsLoading] = useState<boolean>(true);
   
     useEffect(() => {
@@ -49,8 +49,8 @@ const Projects = () => {
             </Grid>
             <Grid item xs={12}>
                 <Tabs centered indicatorColor="secondary" onChange={handleChange} textColor="secondary" value={gitSource}>
-                    <Tab label={EGitSource.GITHUB} value={EGitSource.GITHUB} />
-                    <Tab label={EGitSource.GITLAB} value={EGitSource.GITLAB} />
+                    <Tab label={GitSource.GITHUB} value={GitSource.GITHUB} />
+                    <Tab label={GitSource.GITLAB} value={GitSource.GITLAB} />
                 </Tabs>
             </Grid>
             <Grid item xs={12}>{ renderGitProfile() }</Grid>

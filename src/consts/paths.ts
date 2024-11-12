@@ -1,4 +1,4 @@
-import { PagePaths } from '@/enums';
+import { ApiPaths, PagePaths } from '@/enums';
 
 export const minWidth = '(min-width:500px)';
 
@@ -15,3 +15,10 @@ export const PAGE_PATHS_AND_LABELS = [
     { label: 'About', url: PathsRecord[PagePaths.ABOUT] },
     { label: 'Contact', url: PathsRecord[PagePaths.CONTACT] },
 ];
+
+export const ApiPathsRecord: Record<ApiPaths, string> = {
+    [ApiPaths.BASE_PATH]: '/api/v1',
+    [ApiPaths.INFO]: '/info',
+    [ApiPaths.REPOS]: '/repos',
+    [ApiPaths.USER]: '/user',
+};

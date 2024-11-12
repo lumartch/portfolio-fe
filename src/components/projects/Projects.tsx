@@ -30,7 +30,7 @@ export const Projects: React.FC<Props> = ({ gitSource }) => {
     };
 
     const displayRepos = () => {
-        return projects.map((project: IProject, index: number) => <Grid item key={index} xs={12}> <ProjectItem project={project} /> </Grid> );
+        return projects.map((project: IProject, index: number) => <Grid item key={index} xs={12}> <ProjectItem {...project} /> </Grid> );
     };
     
     useEffect(() => {
