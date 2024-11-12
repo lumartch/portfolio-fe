@@ -7,7 +7,6 @@ import React, { useRef, useState } from 'react';
 const Contact: React.FC = () => {
     const matches = useMediaQuery(minWidth); // TODO: Handle correctly the media size
     const padding: number = matches ? 16 : 0;
-    const { Description, Title } = CONTACT_LABELS;
     const [open, setOpen] = useState<boolean>(false);
     const [message, setMessage] = useState<string>('');
     const [severity, setSeverity] = useState<AlertColor>();
@@ -45,7 +44,7 @@ const Contact: React.FC = () => {
     return (
         <Grid container item paddingLeft={padding} paddingRight={padding} spacing={4} textAlign='center'>
             <Grid container item xs={12}>
-                <PageInfo description={Description} title={Title} />
+                <PageInfo description={CONTACT_LABELS.description} title={CONTACT_LABELS.title} />
                 <Box alignItems='center' p={6} sx={{ width: '100%' }}>
                     <form onSubmit={onSubmit} ref={formRef} style={{ display: 'inline-block', width: '75%' }}>
                         <FormControl fullWidth margin='normal'>
