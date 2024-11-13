@@ -22,7 +22,3 @@ export interface IProfile {
   avatar_uri: string;
   bio: string;
 }
-
-export interface JsonIProfile {
-  [key: string]: IProfile;
-}

@@ -9,8 +9,7 @@ export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
     const _sx = { 
         bgcolor: 'background.default', 
         color: 'text.primary', 
-        padding: '32px',
-        paddingBottom: '50px'
+        padding: '32px 0px 80px 0px',
     };
 
     return (
@@ -18,7 +17,7 @@ export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
             <Box sx={_sx}>
                 <Container>
                     <Header src={GITHUB_AVATAR} title={DEVELOPER_NAME!} />
-                    <Grid2 container sx={{ alignItems: 'center', textAlign: 'center' }}>
+                    <Grid2 container sx={{ alignItems: 'center', gap: '24px', justifyContent: 'center', textAlign: 'center' }}>
                         {children}
                     </Grid2>
                 </Container>
