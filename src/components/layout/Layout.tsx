@@ -1,30 +1,22 @@
-import { FC, ReactNode,  } from 'react';
-import { Grid } from '@mui/material';
+import { DEVELOPER_NAME, GITHUB_AVATAR } from '@/consts';
+import { Box, Container, Grid2 } from '@mui/material';
+import React, { PropsWithChildren } from 'react';
 
-import { Header } from '../header/Header';
-import { Footer } from '../footer/Footer';
-import { DEVELOPER_NAME, GITHUB_AVATAR } from '@/const';
+import { Footer } from './Footer';
+import { Header } from './Header';
 
-type ILayout = {
-    children?: ReactNode;
-}
-
-export const Layout:FC<ILayout> = ({ children }) => {
+export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
     return (
-        <Grid item container xs={12} 
-            sx={{ bgcolor: 'background.default', color: 'text.primary', display: 'block', paddingBottom: '80px',
-            flexDirection: 'row', justifyContent: 'flex-start', position: 'absolute', minHeight: '100%' }}>
-            <Grid item xs={12} sx={{ p: 4, display: 'flex' }}>
-                <Header src={GITHUB_AVATAR} title={DEVELOPER_NAME!} />
-            </Grid>
-            <Grid item container xs={12} sx={{ p: 4, display: 'flex' }}>
-                {children}
-            </Grid>
-            <Grid item xs={12} sx={{ bgcolor: 'text.primary', color: 'background.default', position:'fixed', 
-                bottom: 0, width: '100%', minHeight: '50px', borderRadius: '6px', 
-                display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <Footer/>
-            </Grid>
-        </Grid>
+        <Box sx={{ bgcolor: 'background.default', color: 'text.primary', minHeight: '100%', minWidth: '100%', padding: '32px 0px 80px 0px', position: 'absolute' }}>
+            <Box>
+                <Container sx={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+                    <Header src={GITHUB_AVATAR} title={DEVELOPER_NAME!} />
+                    <Grid2 container sx={{ alignItems: 'center', gap: '24px', justifyContent: 'center', textAlign: 'center' }}>
+                        {children}
+                    </Grid2>
+                </Container>
+            </Box>
+            <Footer/>
+        </Box>
     );
-}
+};

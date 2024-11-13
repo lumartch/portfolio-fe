@@ -1,1 +1,1 @@
-export * from './ApiHandler';
+export { useApiHandler } from './useApiHandler';

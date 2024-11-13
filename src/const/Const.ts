@@ -1,1 +1,0 @@
-export const minWidth = '(min-width:500px)';

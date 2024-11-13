@@ -1,10 +1,10 @@
-export type IProject = {
+export interface IProject {
   source: string;
   id: number;
   name: string;
   full_name: string;
   html_url: string;
-  archived: Boolean;
+  archived: boolean;
   git_url: string;
   ssh_url: string;
   clone_url: string;
@@ -13,7 +13,7 @@ export type IProject = {
   created_at: string;
 }
 
-export type IProfile = {
+export interface IProfile {
   user_id: number;
   name: string;
   username: string;
@@ -21,8 +21,4 @@ export type IProfile = {
   git_uri: string;
   avatar_uri: string;
   bio: string;
-}
-
-export type JsonIProfile = {
-  [key: string]: IProfile;
 }

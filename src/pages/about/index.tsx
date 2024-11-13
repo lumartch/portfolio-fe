@@ -1,46 +1,39 @@
-import { Button, Chip, Grid, Stack, useMediaQuery } from '@mui/material';
+import { PageInfo } from '@/components';
+import { ABOUT_LABELS, PathsRecord } from '@/consts';
+import { PagePaths } from '@/enums';
+import { Button, Chip, Grid2, Stack, Typography } from '@mui/material';
 import { GetStaticProps, InferGetStaticPropsType } from 'next';
 import { useRouter } from 'next/router';
+import React from 'react';
 
-import { Skeleton } from '@/components';
-import { ABOUT_LABELS, EPaths, minWidth } from '@/const';
-
-const About = ( { skills }: InferGetStaticPropsType<typeof getStaticProps> ) => {
+const About: React.FC = ( { skills }: InferGetStaticPropsType<typeof getStaticProps> ) => {
     const router = useRouter();
-    const matches = useMediaQuery(minWidth); // TODO: Handle correctly the media size
-    const { Description, Header, ParagraphOne, ParagraphTwo, Title, SecondTitle } = ABOUT_LABELS;
-    const direction = matches ? 'row' : 'column';
-    const col: number = matches ? 6 : 12;
-    const padding: number = matches ? 8 : 0;
-    return (
-            <Grid container item textAlign='center' spacing={4} paddingLeft={padding} paddingRight={padding}>
-                <Grid item container xs={12}>
-                    <Skeleton title={Title} description={Description} />
-                </Grid>
-                <Grid item container xs={12}>
-                    <Stack spacing={4} direction={direction} paddingLeft={padding} paddingRight={padding}>
-                        <Grid item xs={col}>
-                            <h2>{Header}</h2>
-                            <p>{ParagraphOne}</p>    
-                            <p>{ParagraphTwo}</p>    
-                        </Grid>
-                        <Grid item xs={col}>
-                            <h2>{SecondTitle}</h2>
-                            <Stack direction='row' spacing={2} useFlexGap flexWrap='wrap'>
-                                {skills.map((skill: string, index: number) => <Chip key={index} label={skill} variant='outlined' color='primary' />)}
-                            </Stack>
-                        </Grid>
-                    </Stack>
-                </Grid>
-                <Grid item xs={12}>
-                    <Button variant='outlined' onClick={() => router.push(EPaths.Contact)}>Contact</Button>
-                </Grid>
-            </Grid>
-        );
-}
+    const { description, header, paragraphOne, paragraphTwo, secondTitle, title } = ABOUT_LABELS;
+    const _sx ={ display: 'flex', flexDirection: 'column', gap: '16px' };
 
-export const getStaticProps: GetStaticProps  = async() => {
-    let skills = ['JavaScript', 'TypeScript', 'Java', 'Git', 'ReactJs', 'CSS', 'Cypress', 'Jest', 'Python', 'Azure Static Web Apps', 'C / C++', 'C#', 'Jenkins'];
+    return (
+        <>
+            <PageInfo description={description} title={title} />
+            <Grid2 container spacing={4}>
+                <Grid2 size={{ lg: 8, md: 8, xs: 12 }} sx={_sx}>
+                    <Typography component="h2" variant="h4">{header}</Typography>
+                    <Typography component="p">{paragraphOne}</Typography>    
+                    <Typography component="p">{paragraphTwo}</Typography>    
+                </Grid2>
+                <Grid2 container size={{ lg: 4, md: 4, xs: 12 }} sx={_sx}>
+                    <Typography component="h2" variant="h4">{secondTitle}</Typography>
+                    <Stack direction='row' flexWrap='wrap' spacing={2} useFlexGap>
+                        {skills.map((skill: string, index: number) => <Chip color='primary' key={index} label={skill} variant='outlined' />)}
+                    </Stack>
+                    <Button onClick={() => router.push(PathsRecord[PagePaths.CONTACT])} variant='outlined'>Contact</Button>
+                </Grid2>
+            </Grid2>
+        </>
+    );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+    const skills = ['TypeScript', 'ReactJs', 'JavaScript', 'CSS', 'Git', 'Java', 'Jenkins', 'Cypress', 'Jest', 'C / C++', 'C#'];
     try {
         // const response = await fetch('https://skills-api-7070e-default-rtdb.firebaseio.com/skills.json');
         // const data = await response.json();
@@ -53,7 +46,7 @@ export const getStaticProps: GetStaticProps  = async() => {
             skills: skills
         },
         revalidate: 10
-    }
-}
+    };
+};
 
 export default About;
