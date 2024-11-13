@@ -4,7 +4,6 @@ import emailjs from '@emailjs/browser';
 import { Alert, AlertColor, Button, CircularProgress, Grid2, Snackbar, TextField } from '@mui/material';
 import React, { useRef, useState } from 'react';
 
-import { formStyle } from './contact.css';
 
 const Contact: React.FC = () => {
     const [open, setOpen] = useState<boolean>(false);
@@ -37,7 +36,7 @@ const Contact: React.FC = () => {
     return (
         <>
             <PageInfo description={CONTACT_LABELS.description} title={CONTACT_LABELS.title} />
-            <form className={formStyle} onSubmit={onSubmit} ref={formRef}>
+            <form onSubmit={onSubmit} ref={formRef} style={{ width: '100%' }}>
                 <Grid2 size={{ xs: 12 }} sx={{ display: 'flex', flexDirection: 'column', gap: '34px', padding: '80px' }}>
                     <TextField label='Your name...' name='from_name' required variant='standard' />
                     <TextField label='email@example.com' name='from_email' required type='email' variant='standard' />
