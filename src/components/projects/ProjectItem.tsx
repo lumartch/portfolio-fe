@@ -7,14 +7,15 @@ type Props = IProject;
 
 export const ProjectItem: React.FC<Props> = ({ clone_url, created_at, full_name, git_url, html_url, id, name, source, ssh_url }) => {
     const { palette } = useTheme();
-    const _variant =palette.mode === ColorMode.DARK ? 'elevation' : 'outlined';
     const [open, setOpen] = useState(false);
-
+    
     const onCopyToClipboard = (text: string) => {
         navigator.clipboard.writeText(text);
         setOpen(true);
     };
-
+    
+    const _variant = palette.mode === ColorMode.DARK ? 'elevation' : 'outlined';
+    
     return (
         <>
             <Card variant={_variant}>

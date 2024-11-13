@@ -1,7 +1,5 @@
 import { ApiPaths, PagePaths } from '@/enums';
 
-export const minWidth = '(min-width:500px)';
-
 export const PathsRecord: Record<PagePaths, string> = {
     [PagePaths.ABOUT]: '/about',
     [PagePaths.CONTACT]: '/contact',

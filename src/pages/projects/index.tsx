@@ -41,10 +41,8 @@ const Projects = () => {
     };
 
     const onCloseMenu = (_archived: boolean) => {
-        if(_archived !== archivedRepos) {
-            setArchivedRepos(_archived);
-            getGitInfo(gitSource, _archived);
-        }
+        setArchivedRepos(_archived);
+        getGitInfo(gitSource, _archived);
         setAnchorEl(null);
     };
 
@@ -89,7 +87,7 @@ const Projects = () => {
                     onClick={onOpenMenu} variant='outlined'>
                     {BUTTON_TEXT}
                 </Button>
-                <Menu anchorEl={anchorEl} MenuListProps={{ 'aria-labelledby': 'basic-button' }} onClose={() => onCloseMenu(archivedRepos)} open={open}>
+                <Menu anchorEl={anchorEl} MenuListProps={{ 'aria-labelledby': 'basic-button' }} onClose={() => setAnchorEl(null)} open={open}>
                     <MenuItem onClick={() => onCloseMenu(false)}>Active Repos</MenuItem>
                     <MenuItem onClick={() => onCloseMenu(true)}>Deactivated Repos</MenuItem>
                 </Menu>
