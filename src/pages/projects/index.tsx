@@ -3,7 +3,7 @@ import { GitProfile, Loader, PageInfo, Projects as ProjectList } from '@/compone
 import { DEVELOPER_GIT_USER, PROJECTS_LABELS } from '@/consts';
 import { GitSource } from '@/enums';
 import { IProfile, IProject } from '@/interfaces';
-import { Button, Grid2, Menu, MenuItem, Tab, Tabs, Typography } from '@mui/material';
+import { Alert, Button, Grid2, Menu, MenuItem, Snackbar, Tab, Tabs, Typography } from '@mui/material';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 
@@ -14,6 +14,7 @@ const Projects = () => {
     const [gitSource, setGitSource] = useState(GitSource.GITHUB);
     const [isLoading, setIsLoading] = useState(true);
     const [archivedRepos, setArchivedRepos] = useState(false);
+    const [showToast, setShowToast] = useState<boolean>(false);
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
     const { getInfo, getRepos } = useApiHandler();
@@ -25,10 +26,10 @@ const Projects = () => {
             const { data: projectsData } = await getRepos(DEVELOPER_GIT_USER!, _archived, _gitSource);
             setProjects(projectsData);
             setProfile(profileData);
-        } catch (e) {
-            console.error(`ERROR THROWN BY SERVER ${e}`);
-        } finally {
             setIsLoading(false);
+        } catch (e) {
+            setShowToast(true);
+            console.error(`ERROR THROWN BY SERVER ${e}`);
         }
     };
 
@@ -93,6 +94,11 @@ const Projects = () => {
                 </Menu>
             </Grid2>
             { _renderRepos() }
+            <Snackbar autoHideDuration={6000} onClose={() => setShowToast(false)} open={showToast}>
+                <Alert onClose={() => setShowToast(false)} severity={'error'} sx={{ width: '100%' }}>
+                    Oops! Something went wrong, try it later!
+                </Alert>
+            </Snackbar>
         </>
     );
 };
