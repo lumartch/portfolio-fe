@@ -42,7 +42,7 @@ const Contact: React.FC = () => {
                     <TextField label='Your name...' name='from_name' required variant='standard' />
                     <TextField label='email@example.com' name='from_email' required type='email' variant='standard' />
                     <TextField label='Subject...' name='subject' required variant='standard' />
-                    <TextField label='Mesage...' multiline name='message' required sx={{ minHeight: '80px' }} variant='outlined' />
+                    <TextField label='Mesage...' multiline name='message' required variant='outlined' />
                     <Button disabled={isLoading} type='submit' variant='outlined' >{ isLoading ? <CircularProgress /> : 'Send email' }</Button>
                 </Grid2>
             </form>
