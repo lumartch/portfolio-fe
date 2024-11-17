@@ -154,6 +154,15 @@ export default [
       "comma-spacing": ["error"],
       "arrow-spacing": ["error"],
       "object-curly-spacing": ["error", "always"],
+      "max-len": [
+        "error",
+        {
+          code: 140,
+          ignoreComments: true,
+          ignoreUrls: true,
+          ignoreStrings: true,
+        },
+      ],
     },
   },
   pluginJs.configs.recommended,

@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 export const DEVELOPER_SUMMARY = `I am a Software Development Engineer with proficiency in both Front-End and Back-End development. 
     I am actively seeking new challenges to elevate my career within the sphere of emerging technologies. 
     Throughout my professional journey, I have delved into various facets of software development, including Front-End and Back-End development, quality assurance, and providing support for legacy systems. 
