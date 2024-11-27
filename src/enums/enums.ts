@@ -21,3 +21,8 @@ export enum ColorMode {
     DARK = 'dark',
     LIGHT = 'light'
 }
+
+export enum ApiType {
+    PROFILE = 'PROFILE',
+    REPOS = 'REPOS'
+}
