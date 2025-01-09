@@ -19,8 +19,8 @@ const nextConfig = {
 
 module.exports = withVanillaExtract(nextConfig);
 
-const SERVER_URI = process.env.NEXT_PUBLIC_SERVER_URI;
-const FINANCES_URI = process.env.NEXT_PUBLIC_FINANCES_URI;
+const SERVER_URI = "https://api.lumartch.dev";
+const FINANCES_URI = "https://finances.apps.lumartch.dev";
 const API_PATH = "/api/v1/:path*";
 
 module.exports = {
