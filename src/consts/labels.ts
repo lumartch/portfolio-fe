@@ -28,3 +28,6 @@ export const CONTACT_LABELS = {
         I welcome feedback regarding this website, my projects, my experiences as a developer, as well as any potential new career opportunities.`,
     title: 'Contact'
 };
+
+export const ACTIVE_REPOS = 'Active Repos';
+export const DEACTIVATED_REPOS = 'Deactivated Repos';

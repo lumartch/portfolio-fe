@@ -8,7 +8,7 @@ export const useApiHandler = () => {
     const controller = new AbortController();
 
     return {
-        abortAll: async () => {
+        abortAll: () => {
             return controller.abort();
         },
         getInfo: async (username: string, gitSource: string = 'all') => {

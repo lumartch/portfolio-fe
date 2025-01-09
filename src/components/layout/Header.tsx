@@ -3,6 +3,7 @@ import { ColorMode } from '@/enums';
 import { useColorMode } from '@/theme';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { Avatar, Button, Grid2, useTheme } from '@mui/material';
 import Link from 'next/link';
 import React from 'react';
@@ -23,7 +24,7 @@ export const Header: React.FC<Props> = ({ src, title }) => {
     return (
         <Grid2 container padding="8px">
             <Grid2 size={_size} sx={_sxGrid}>
-                <Button href={LINKEDIN_URI!} startIcon={<Avatar alt='logo' src={src} />} sx={_sxButton} target='_blank'>
+                <Button endIcon={<LinkedInIcon />} href={LINKEDIN_URI!} startIcon={<Avatar alt='logo' src={src} />} sx={_sxButton} target='_blank'>
                     {title}
                 </Button>
             </Grid2>
